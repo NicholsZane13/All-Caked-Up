@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import React, { useEffect, useState }  from 'react'
+import Home from './components/pages/home/HomePage'
+import Menu from './components/pages/menu/Menu'
+import Services from './components/pages/services/Services'
+import OnlineOrder from './components/pages/online-order/OnlinePickUp'
+import Portfolio from './components/pages/portfolio/Portfolio'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+    <div className="">
+      <Home />
+      <Menu />
+      <Services />
+      <OnlineOrder />
+      <Portfolio />
     </div>
+  </div>
   );
 }
 

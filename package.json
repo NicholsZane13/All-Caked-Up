@@ -1,0 +1,19 @@
+{
+  "name": "all-caked-up",
+  "version": "1.0.0",
+  "description": "Bakery Website Welcome to the Bakery Website! This is a React-based website that provides information about our bakery and allows customers to place orders online.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicholsZane13/All-Caked-Up.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NicholsZane13/All-Caked-Up/issues"
+  },
+  "homepage": "https://github.com/NicholsZane13/All-Caked-Up#readme"
+}

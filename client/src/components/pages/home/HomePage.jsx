@@ -1,4 +1,10 @@
 import React from "react";
+import Header from "../../Header";
+import Navbar from "../../Navbar";
+import PicturePortfolio from "../../UI/PicturePortfolio";
+import Contact from "../../Contact";
+import Footer from "../../Footer";
+import "../../../index.css";
 
 function HomePage() {
   return (
@@ -12,7 +18,7 @@ function HomePage() {
     <body>
         <Header />
         <Navbar />
-        <div className="">
+        <div className="bg-green-900 rounded-md">
             <h1 className="">Origin Story : All Caked Up</h1>
             <p className="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
             molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
@@ -24,9 +30,9 @@ function HomePage() {
 
         <div className="">
             <h1 className="">Look At Us!</h1>
-            <PicturePortfolio />
+            {/* <PicturePortfolio /> */}
         </div>
-        <Contact />
+        {/* <Contact /> */}
         <Footer />
     </body>
     </html>

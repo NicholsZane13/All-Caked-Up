@@ -1,20 +1,20 @@
 import React, { useEffect, useState }  from 'react'
-import Home from './components/pages/home/HomePage'
+import HomePage from './components/pages/home/HomePage'
 import Menu from './components/pages/menu/Menu'
 import Services from './components/pages/services/Services'
 import OnlineOrder from './components/pages/online-order/OnlinePickUp'
 import Portfolio from './components/pages/portfolio/Portfolio'
-import './App.css';
+import './index.css';
 
 function App() {
   return (
   <div className="">
     <div className="">
-      <Home />
-      <Menu />
+      <HomePage />
+      {/* <Menu />
       <Services />
       <OnlineOrder />
-      <Portfolio />
+      <Portfolio /> */}
     </div>
   </div>
   );

@@ -1,17 +1,25 @@
-import React from "react";
+const { Schema, model } = require("mongoose");
+const categorySchema = require('./models/category.js')
+const productSchema = new Schema({
+  productName: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  price: {
+    type: Number,
+    default: 5,
+  },
+  description: {
+    type: String,
+    min: 5,
+    max: 50,
+  },
+  Category: [categorySchema],
+},
 
-function Product(props) {
-  const { name, image, price, description } = props;
+{ timestamps: true});
 
-  return (
-    <div className="product">
-      <img src={image} alt={name} />
-      <h2>{name}</h2>
-      <p className="price">{price}</p>
-      <p className="description">{description}</p>
-      <button>Add to Cart</button>
-    </div>
-  );
-}
+const Product = model("Product", productSchema);
 
-export default Product;
+module.exports = Product;

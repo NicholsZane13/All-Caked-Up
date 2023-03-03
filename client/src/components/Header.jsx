@@ -8,24 +8,26 @@ function Header() {
   }
 
   return (
-    <header>
-      <nav>
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>
-            <button onClick={toggleMenu}>Dropdown</button>
-            {menuOpen && (
-              <ul>
-                <li>Option 1</li>
-                <li>Option 2</li>
-                <li>Option 3</li>
-              </ul>
-            )}
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <div class="sticky top-0 z-50">
+      <header>
+        <nav class = "content-evenly display:inline-block">
+          <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>
+              <button onClick={toggleMenu}>Dropdown</button>
+              {menuOpen && (
+                <ul class="content-evenly sticky top-0 z">
+                  <li>Option 1</li>
+                  <li>Option 2</li>
+                  <li>Option 3</li>
+                </ul>
+              )}
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </div>
   );
 }
 

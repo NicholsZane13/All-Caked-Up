@@ -8,9 +8,8 @@ function Footer() {
           <h3>Company Name</h3>
           <p>🎂All Caked Up🍑</p>
         </div>
-        
       </div>
-      <div className="bottom-bar">
+      <div className="bottom-bar" class="content-center">
         <p>🎂</p>
       </div>
     </footer>

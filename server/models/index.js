@@ -1,4 +1,4 @@
-const product = require('./product.js');
+const Product = require('./Product.js');
 const User = require('./User');
 
-module.exports = { product, User };
+module.exports = { Product, User };

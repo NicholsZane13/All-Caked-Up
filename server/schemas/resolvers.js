@@ -1,89 +1,129 @@
-const { Product, User } = require('../models');
-const { AuthenticationError, ValidationError } = require('apollo-server-express');
-const { signToken } = require('../utils/auth');
+const { Product, User } = require("../models");
+const {
+  AuthenticationError,
+  ValidationError,
+} = require("apollo-server-express");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
-    Query: {
-        users: async (parent, args, context) => {
-            if (!context.user) {
-                throw new AuthenticationError('You need to be logged in!');
-            }
+  Query: {
+    users: async (parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError("You need to be logged in!");
+      }
 
-            return User.find();
-        },
-
-        user: async (parent, { userId }, context) => {
-            if (!context.user) {
-                throw new AuthenticationError('You need to be logged in!');
-            }
-
-            return User.findOne({ _id: userId });
-        },
-
-        products: async (parent, args, context) => {
-            return Product.find();
-        },
-
-        product: async (parent, { productId }, context) => {
-            return Product.findOne({ _id: productId });
-        }
+      return User.find();
     },
 
-    Mutation: {
-        addUser: async (parent, { name, email, password }) => {
-            const user = await User.create({ name, email, password });
+    user: async (parent, { userId }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError("You need to be logged in!");
+      }
 
-            const token = signToken(user);
+      return User.findOne({ _id: userId });
+    },
 
-            return { token, user };
-        },
+    products: async (parent, args, context) => {
+      return Product.find();
+    },
 
-        login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email });
+    product: async (parent, { productId }, context) => {
+      return Product.findOne({ _id: productId });
+    },
+  },
 
-            if (!user) {
-                throw new AuthenticationError('User email does not exist.');
-            }
+  Mutation: {
+    addUser: async (
+      parent,
+      { name, email, password, isAdmin = false, isSuper = false },
+      context
+    ) => {
+      if (context.user.isAdmin) {
+        const user = await User.create({
+          name,
+          email,
+          password,
+          isAdmin,
+          isSuper,
+        });
 
-            const correctPw = await user.isCorrectPassword(password);
+        return user;
+      } else {
+        const user = await User.create({ name, email, password });
 
-            if (!correctPw) {
-                throw new AuthenticationError('Incorrect password!');
-            }
+        const token = signToken(user);
 
-            const token = signToken(user);
-            return { token, user };
-        },
+        return { token, user };
+      }
+    },
 
-        removeUser: async (parent, args, context) => {
-            if (context && context.user) {
-                return User.findOneAndDelete({ _id: context.user._id });
-            }
-            throw new AuthenticationError('You must be logged in to delete user account.');
-        },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
-        // TODO: update following product code to account for admin/superuser permissions/auth
-        addProduct: async (parent, args, context) => {
-            const { name, price, description, category, theme } = args;
+      if (!user) {
+        throw new AuthenticationError("User email does not exist.");
+      }
 
-            if (!name) {
-                throw new ValidationError('Product name was not provided');
-            }
+      const correctPw = await user.isCorrectPassword(password);
 
-            const product = await Product.create({ name, price, description, category, theme });
+      if (!correctPw) {
+        throw new AuthenticationError("Incorrect password!");
+      }
 
-            return product;
-        },
+      const token = signToken(user);
+      return { token, user };
+    },
 
-        removeProduct: async (parent, args, context) => {
-            const { name } = args;
+    removeUser: async (parent, args, context) => {
+      if (context && context.user) {
+        return User.findOneAndDelete({ _id: context.user._id });
+      }
 
-            const product = await Product.findOneAndDelete({ name });
+      throw new AuthenticationError(
+        "You must be logged in to delete user account."
+      );
+    },
 
-            return product;
-        }
-    }
-}
+    // TODO: update following product code to account for admin/superuser permissions/auth
+    addProduct: async (parent, args, context) => {
+      if (context.user.isAdmin || context.user.isSuper) {
+        throw new AuthenticationError(
+          "You must be an admin or super user to add or delete products!"
+        );
+      }
+      
+      const { name, price, description, category, theme } = args;
+
+      if (!name) {
+        throw new ValidationError("Product name was not provided");
+      }
+
+      const product = await Product.create({
+        name,
+        price,
+        description,
+        category,
+        theme,
+      });
+
+      return product;
+    },
+
+    removeProduct: async (parent, args, context) => {
+      if (!context.user.isAdmin && !context.user.isSuper) {
+        throw new AuthenticationError(
+          "You must be an admin or super user to add or delete products!"
+        );
+      }
+
+      const { name } = args;
+
+      const product = await Product.findOneAndDelete({ name });
+
+      return product;
+    },
+  },
+};
 
 module.exports = resolvers;
 

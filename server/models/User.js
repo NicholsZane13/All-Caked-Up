@@ -26,7 +26,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
     match: [
-      /^([a-z0-9_\.-!@#$%^&*\{\}\[\]\(\)\\\/=~`]+)/i,
+      /^(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z])(?=\D*\d)(?=[^!?#%@$^&*(){}[\]\+=\-_]*[!#%])[A-Za-z0-9!?#%@$^&*(){}[\]\+=\-_]{8,32}$/,
       'Your password contains unallowed characters.'
     ]
   },

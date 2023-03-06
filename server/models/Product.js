@@ -8,7 +8,7 @@ const productSchema = new Schema({
   },
   price: {
     type: Number,
-    default: 5,
+    default: 5.00,
   },
   description: {
     type: String,
@@ -18,7 +18,7 @@ const productSchema = new Schema({
   },
   category: {
     type: String,
-    enum: ['category_NA', 'coffee', 'donut', 'pastry', 'cupcake', 'cookie', 'cake']
+    enum: ['category_NA', 'coffee', 'donut', 'pastry', 'cupcake', 'cookie', 'cake'],
     default: 'category_NA'
   },
   theme: {

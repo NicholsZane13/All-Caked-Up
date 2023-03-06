@@ -30,6 +30,14 @@ const userSchema = new Schema({
       'Your password contains unallowed characters.'
     ]
   },
+  isAdmin: {
+    type: Boolean,
+    default: false
+  },
+  isSuper: {
+    type: Boolean,
+    default: false
+  },
   favorites: [favoriteSchema]
 },
 { timestamps: true });

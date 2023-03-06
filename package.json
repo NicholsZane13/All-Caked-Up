@@ -2,7 +2,7 @@
   "name": "all-caked-up",
   "version": "1.0.0",
   "description": "Bakery Website Welcome to the Bakery Website! This is a React-based website that provides information about our bakery and allows customers to place orders online.",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "start": "node server --ignore client",
     "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",

@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+  background-color:#1D2820; /* Change to your desired color */
+  z-index: 1;
+  height: 80px; /* Change to your desired height */
+  line-height: 60px; /* Centers the text vertically */
+}
+button:focus {
+  outline: none; /* Removes the default focus outline */
+}

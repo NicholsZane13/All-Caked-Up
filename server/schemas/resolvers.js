@@ -84,14 +84,14 @@ const resolvers = {
       );
     },
 
-    // TODO: update following product code to account for admin/superuser permissions/auth
+    // TODO: add Firebase refs for product images
     addProduct: async (parent, args, context) => {
       if (context.user.isAdmin || context.user.isSuper) {
         throw new AuthenticationError(
           "You must be an admin or super user to add or delete products!"
         );
       }
-      
+
       const { name, price, description, category, theme } = args;
 
       if (!name) {
@@ -126,13 +126,3 @@ const resolvers = {
 };
 
 module.exports = resolvers;
-
-/*
-type Mutation {
-        addUser(name: String!, email: String!, password: String!): Auth
-        login(email: String!, password: String!): Auth
-        removeUser: User
-        removeProduct: Product
-        addProduct(name: String!, price: Float, description: String, category: String, theme: String): Product
-    }
-*/

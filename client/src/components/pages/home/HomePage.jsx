@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../../Header";
-import Navbar from "../../Navbar";
 import PicturePortfolio from "../../UI/Picture/PicturePortfolio";
 import Contact from "../../Contact";
 import Footer from "../../Footer";
@@ -8,9 +6,8 @@ import "../../../index.css";
 
 function HomePage() {
   return (
-    <body>
-        <Header />
-        <Navbar />
+      <>
+
         <div className="bg-green flex items-left justify-center flex-col text-left pl-10 pt-20 pb-10">
             <h1 className="font-Gloock text-tan text-4xl md:text-7xl mb-1 md:mb-3 font-bold">Origin Story : All Caked Up</h1>
             <p className="font-Indie text-tan text-lg max-w-xl mb-6 font-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
@@ -25,9 +22,10 @@ function HomePage() {
             <h1 className=" text-4xl md:text-7xl mb-1 md:mb-3 font-bold"><a className="italic animate-pulse" href="https://www.facebook.com/profile.php?id=100071444614424">Check Us Out!</a></h1>
             <PicturePortfolio />
         </div>
-        {/* <Contact /> */}
+        <Contact />
         <Footer />
-    </body>
+      </>
+
   );
 }
 

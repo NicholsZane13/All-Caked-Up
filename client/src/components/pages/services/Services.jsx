@@ -56,19 +56,19 @@ function ServicePage() {
     <ul className="mb-8 space-y-4">
         <li className="space-x-3">
             {cakeIcon}
-            <span  className="text-2xl font-bold text-center text-black ">Browse through our site and gather some inspiration!</span>
+            <span  className="text-2xl font-bold text-center text-black">Browse through our site and gather some inspiration!</span>
         </li>
         <li className="space-x-3">    
             {cakeIcon}
-            <span className="text-2xl font-bold text-center text-black ">Determine the details about your order. How many are you feeding?</span>
+            <span className="text-2xl font-bold text-center text-black">Determine the details about your order. How many are you feeding?</span>
         </li>
         <li className="space-x-3">
             {cakeIcon}
-            <span className="text-2xl font-bold text-center text-black ">Give us a call to handle any questions or concerns you may have. 620-555-8888</span>
+            <span className="text-2xl font-bold text-center text-black">Give us a call to handle any questions or concerns you may have. 620-555-8888</span>
         </li>
         <li className="space-x-3">
             {cakeIcon}
-            <span className="text-2xl font-bold text-center text-black ">Receive delicious goodies to enjoy!</span>
+            <span className="text-2xl font-bold text-center text-black">Receive delicious goodies to enjoy!</span>
         </li>
     </ul>
 </div>

@@ -4,6 +4,7 @@ const typeDefs = gql`
 
     type Product {
         _id: ID
+        photo_ref: String
         name: String
         price: Float
         description: String
@@ -21,6 +22,8 @@ const typeDefs = gql`
         name: String
         email: String
         password: String
+        isAdmin: Boolean
+        isSuper: Boolean
         favorites: [Favorite]!
     }
 
@@ -37,7 +40,7 @@ const typeDefs = gql`
     } 
 
     type Mutation {
-        addUser(name: String!, email: String!, password: String!): Auth
+        addUser(name: String!, email: String!, password: String!, isAdmin: Boolean, isSuper: Boolean): Auth
         login(email: String!, password: String!): Auth
         removeUser: User
         removeProduct: Product

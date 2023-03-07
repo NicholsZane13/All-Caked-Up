@@ -9,7 +9,7 @@ function Footer() {
           <p>🎂All Caked Up🍑</p>
         </div>
       </div>
-      <div className="bottom-bar" class="content-center">
+      <div className="bottom-bar content-center">
         <p>🎂</p>
       </div>
     </footer>

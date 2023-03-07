@@ -1,20 +1,21 @@
 import React from "react";
+import {  Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <nav class="sticky top-0 z-50 group">
-      <ul class="hidden group-hover:block">
+    <nav className="sticky top-0 z-50 group">
+      <ul className="group-hover:block">
         <li>
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">Services</a>
+          <Link to="/menu">Menu</Link>
         </li>
         <li>
-          <a href="#">Menu</a>
+          <Link to="/portfolio">Portfolio</Link>
         </li>
         <li>
-          <a href="#">Online Order</a>
+          <Link to="/services">Services</Link>
         </li>
       </ul>
     </nav>

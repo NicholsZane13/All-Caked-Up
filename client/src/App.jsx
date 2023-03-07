@@ -4,36 +4,23 @@ import Menu from './components/pages/menu/Menu'
 import ServicePage from './components/pages/services/Services'
 import OnlineOrder from './components/pages/online-order/OnlinePickUp'
 import Portfolio from './components/pages/portfolio/Portfolio'
-import { Switch, Route, Routes } from 'react-router-dom';
+import {  Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import Header from './components/Header';
 
 function App() {
   return (
-  // <div className="">
-  //   <div className="">
-  //     {/*<HomePage />
-  //      <Menu />*/}
-  //     <ServicePage />
-  //     {/*<OnlineOrder />
-  //     <Portfolio /> */}
-  //   </div>
-  // </div>
-<Switch>
-  <Routes>  
-         <Route path="/menu">
-           <Menu />
-         </Route>
-         <Route path="/services">
-           <ServicePage />
-         </Route>
-         <Route path="/portfolio">
-           <Portfolio />
-         </Route>
-         <Route path="/">
-           <HomePage />
-         </Route>
-         <Route path="*" element={<div>Page Not Found!</div>}></Route>
+  
+  <Router>
+    <Header />
+  <Routes>
+         <Route element={<Menu />} path="/menu" />
+         <Route element={<ServicePage />}path="/services" />
+         <Route element={<Portfolio />}path="/portfolio" />
+         <Route element={<HomePage />} path="/" />
+         <Route path="*" element={<div>Page Not Found!</div>} />
   </Routes>
-</Switch>
+    {/* <Footer /> */}
+  </Router>
   );
 }
 

@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <div className="sticky-top top-0 z-50">
       <nav>
-        <ul className="flex justify-end">
+        <ul className="flex justify-end bg-greenL">
           <li>
             <Link to="/">
               <button className="text-right relative mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded">

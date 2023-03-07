@@ -38,7 +38,7 @@ const resolvers = {
       { name, email, password, isAdmin = false, isSuper = false },
       context
     ) => {
-      if (context.user.isAdmin) {
+      if (context && context.user && context.user.isAdmin) {
         const user = await User.create({
           name,
           email,
@@ -49,6 +49,12 @@ const resolvers = {
 
         return user;
       } else {
+        const checkUser = await User.findOne({ email });
+
+        if (checkUser) {
+            throw new ValidationError('User already exists!');
+        }
+
         const user = await User.create({ name, email, password });
 
         const token = signToken(user);
@@ -75,6 +81,9 @@ const resolvers = {
     },
 
     removeUser: async (parent, args, context) => {
+        const { email } = args;
+        console.log(context);
+
       if (context && context.user) {
         return User.findOneAndDelete({ _id: context.user._id });
       }
@@ -92,7 +101,7 @@ const resolvers = {
         );
       }
 
-      const { name, price, description, category, theme } = args;
+      const { name, price, photo_ref, description, category, theme } = args;
 
       if (!name) {
         throw new ValidationError("Product name was not provided");
@@ -101,6 +110,7 @@ const resolvers = {
       const product = await Product.create({
         name,
         price,
+        photo_ref,
         description,
         category,
         theme,

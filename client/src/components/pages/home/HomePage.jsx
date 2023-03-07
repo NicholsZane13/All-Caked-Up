@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../../Header";
-import Navbar from "../../Navbar";
 import PicturePortfolio from "../../UI/Picture/PicturePortfolio";
 import Contact from "../../Contact";
 import Footer from "../../Footer";

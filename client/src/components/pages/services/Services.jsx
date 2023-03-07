@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../../Header";
-import Navbar from "../../Navbar";
 import Contact from "../../Contact";
 import Footer from "../../Footer";
 import "../../../index.css";
@@ -78,7 +76,6 @@ function ServicePage() {
         </li>
     </ul>
 </div>
-    
         <Contact />
         <Footer />
     </>

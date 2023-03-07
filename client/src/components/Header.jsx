@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "./Navbar";
 
 function Header() {
   function handleClick(path) {
@@ -8,7 +7,6 @@ function Header() {
   }
 
   return (
-    <>
     <div className="sticky-top top-0 z-50 ">
       <header>
         <ul className="flex justify-end">
@@ -42,8 +40,9 @@ function Header() {
           </button>
         </ul>
       </header>
-    </>
+    </div>
   );
 }
+            
 
 export default Header;

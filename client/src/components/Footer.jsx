@@ -3,14 +3,9 @@ import React from "react";
 function Footer() {
   return (
     <footer>
-      <div className="footer-container">
-        <div className="left-section">
-          <h3>Company Name</h3>
-          <p>🎂All Caked Up🍑</p>
-        </div>
-      </div>
-      <div className="bottom-bar content-center">
-        <p>🎂</p>
+      <div className="footer-container text-center bg-green text-white py-2" style={{ height: "75px" }}>
+        <h2>🎂All Caked Up🍑</h2>
+        <p>© 2023 All Caked Up. All Rights Reserved.</p>
       </div>
     </footer>
   );

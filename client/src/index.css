@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .sticky-top {
-  position: sticky;
+  position: fixed;
   top: 0;
   background-color:#1D2820; /* Change to your desired color */
   z-index: 1;

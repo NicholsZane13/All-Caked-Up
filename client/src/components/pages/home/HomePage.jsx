@@ -22,7 +22,7 @@ function HomePage() {
             <h1 className=" text-4xl md:text-7xl mb-1 md:mb-3 font-bold"><a className="italic animate-pulse" href="https://www.facebook.com/profile.php?id=100071444614424">Check Us Out!</a></h1>
             <PicturePortfolio />
         </div>
-        <Contact />
+        {/* <Contact /> */}
         <Footer />
       </>
 

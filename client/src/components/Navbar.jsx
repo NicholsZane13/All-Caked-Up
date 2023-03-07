@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <div className="sticky-top top-0 z-50">
+    <div className="fixed top-0 bg-green z-10 h-20 flex items-center justify-center">
       <nav>
         <ul className="flex justify-end">
           <li>

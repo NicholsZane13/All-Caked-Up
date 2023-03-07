@@ -50,25 +50,25 @@ function ServicePage() {
         </div>
 </div>
 <div className="bg-white flex justify-center pt-10 pb-10">
-    <h1 className="font-Gloock text-black text-4xl md:text-7xl mb-1 md:mb-3 font-bold pb-5">HOW TO ORDER CUSTOM BAKED GOODS</h1>
+    <h1 className="font-Gloock text-greenL text-4xl md:text-7xl mb-1 md:mb-3 font-bold pb-5">HOW TO ORDER CUSTOM BAKED GOODS</h1>
 </div>
 <div className="justify-center flex">
     <ul className="mb-8 space-y-4">
         <li className="space-x-3">
             {cakeIcon}
-            <span  className="text-2xl font-bold text-center text-black">Browse through our site and gather some inspiration!</span>
+            <span  className="text-2xl font-bold text-center text-greenL">Browse through our site and gather some inspiration!</span>
         </li>
         <li className="space-x-3">    
             {cakeIcon}
-            <span className="text-2xl font-bold text-center text-black">Determine the details about your order. How many are you feeding?</span>
+            <span className="text-2xl font-bold text-center text-greenL">Determine the details about your order. How many are you feeding?</span>
         </li>
         <li className="space-x-3">
             {cakeIcon}
-            <span className="text-2xl font-bold text-center text-black">Give us a call to handle any questions or concerns you may have. 620-555-8888</span>
+            <span className="text-2xl font-bold text-center text-greenL">Give us a call to handle any questions or concerns you may have. 620-555-8888</span>
         </li>
         <li className="space-x-3">
             {cakeIcon}
-            <span className="text-2xl font-bold text-center text-black">Receive delicious goodies to enjoy!</span>
+            <span className="text-2xl font-bold text-center text-greenL">Receive delicious goodies to enjoy!</span>
         </li>
     </ul>
 </div>

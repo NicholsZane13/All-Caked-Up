@@ -10,6 +10,9 @@ const productSchema = new Schema({
     type: Number,
     default: 5.00,
   },
+  photo_ref: {
+    type: String
+  },
   description: {
     type: String,
     min: 8,

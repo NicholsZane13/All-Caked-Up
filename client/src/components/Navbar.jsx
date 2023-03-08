@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <div className="fixed top-0 bg-green z-10 h-20 flex items-center justify-center">
+    <div className="fixed top-0 bg-green z-10 h-20 flex items-center justify-center pr-4">
       <nav>
-        <ul className="flex justify-end bg-greenL">
+        <ul className="flex justify-end bg-green">
           <li>
             <Link to="/">
               <button className="text-right relative mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded">

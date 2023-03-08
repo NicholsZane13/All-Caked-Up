@@ -73,7 +73,7 @@ function ServicePage() {
     </ul>
 </div>
         <Contact />
-        <Footer />
+        <div style={{ position: "fixed", bottom: 0, width: "100%" }}><Footer /></div>
     </>
   );
 }

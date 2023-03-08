@@ -38,7 +38,7 @@ const resolvers = {
       { name, email, password, isAdmin = false, isSuper = false },
       context
     ) => {
-      if (context.user.isAdmin) {
+      if (context && context.user && context.user.isAdmin) {
         const user = await User.create({
           name,
           email,
@@ -47,8 +47,16 @@ const resolvers = {
           isSuper,
         });
 
-        return user;
+        const token = signToken(user);
+
+        return { token, user };
       } else {
+        const checkUser = await User.findOne({ email });
+
+        if (checkUser) {
+          throw new ValidationError("User already exists!");
+        }
+
         const user = await User.create({ name, email, password });
 
         const token = signToken(user);
@@ -57,7 +65,15 @@ const resolvers = {
       }
     },
 
-    login: async (parent, { email, password }) => {
+    addSuperOrAdmin: async (
+        parent,
+        { name, email, password, isAdmin = false, isSuper },
+        context
+    ) => {
+
+    },
+
+    login: async (parent, { email, password }, context) => {
       const user = await User.findOne({ email });
 
       if (!user) {
@@ -71,11 +87,12 @@ const resolvers = {
       }
 
       const token = signToken(user);
+
       return { token, user };
     },
 
     removeUser: async (parent, args, context) => {
-      if (context && context.user) {
+      if (context?.user) {
         return User.findOneAndDelete({ _id: context.user._id });
       }
 
@@ -85,14 +102,19 @@ const resolvers = {
     },
 
     // TODO: add Firebase refs for product images
-    addProduct: async (parent, args, context) => {
-      if (context.user.isAdmin || context.user.isSuper) {
+    addProduct: async (parent, args, { user }) => {
+      if (!user) {
+        throw new AuthenticationError(
+          "You must be logged in before adding products."
+        );
+      }
+      if (user.isAdmin || user.isSuper) {
         throw new AuthenticationError(
           "You must be an admin or super user to add or delete products!"
         );
       }
 
-      const { name, price, description, category, theme } = args;
+      const { name, price, photo_ref, description, category, theme } = args;
 
       if (!name) {
         throw new ValidationError("Product name was not provided");
@@ -101,6 +123,7 @@ const resolvers = {
       const product = await Product.create({
         name,
         price,
+        photo_ref,
         description,
         category,
         theme,

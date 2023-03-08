@@ -1,13 +1,11 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 const favoriteSchema = require('./Favorite');
-require('dotenv').config();
 
 const userSchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   email: {
@@ -45,8 +43,10 @@ const userSchema = new Schema({
 // set up pre-save middleware to create password
 userSchema.pre("save", async function (next) {
   if (this.isNew || this.isModified("password")) {
-    const saltRounds = process.env.SALT_ROUNDS;
-    this.password = bcrypt.hash(this.password, saltRounds);
+    const rounds = process.env.SALT_ROUNDS;
+    const salt = await bcrypt.genSalt(Number(rounds));
+    const hashedPassword = await bcrypt.hash(this.password, salt);
+    this.password = hashedPassword;
   }
 
   next();

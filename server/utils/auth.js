@@ -2,8 +2,8 @@ require('dotenv').config();
 
 const jwt = require('jsonwebtoken');
 
-const secret = process.env.JWT_SECRET || '69fourtwenty69';
-const expiration = process.env.JWT_EXPIRATION || '2h';
+const secret = process.env.JWT_SECRET;
+const expiration = process.env.JWT_EXPIRATION;
 
 module.exports = {
   authMiddleware: function ({ req }) {
@@ -14,7 +14,7 @@ module.exports = {
     if (req.headers.authorization) {
       token = token.split(' ').pop().trim();
     }
-
+    
     if (!token) {
       return req;
     }
@@ -30,8 +30,8 @@ module.exports = {
     // return the request object so it can be passed to the resolver as `context`
     return req;
   },
-  signToken: function ({ email, name, _id }) {
-    const payload = { email, name, _id };
+  signToken: function ({ email, name, _id, isAdmin, isSuper }) {
+    const payload = { email, name, _id, isAdmin, isSuper };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };

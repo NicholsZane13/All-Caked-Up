@@ -47,12 +47,14 @@ const resolvers = {
           isSuper,
         });
 
-        return user;
+        const token = signToken(user);
+
+        return { token, user };
       } else {
         const checkUser = await User.findOne({ email });
 
         if (checkUser) {
-            throw new ValidationError('User already exists!');
+          throw new ValidationError("User already exists!");
         }
 
         const user = await User.create({ name, email, password });
@@ -63,7 +65,15 @@ const resolvers = {
       }
     },
 
-    login: async (parent, { email, password }) => {
+    addSuperOrAdmin: async (
+        parent,
+        { name, email, password, isAdmin = false, isSuper },
+        context
+    ) => {
+
+    },
+
+    login: async (parent, { email, password }, context) => {
       const user = await User.findOne({ email });
 
       if (!user) {
@@ -77,14 +87,12 @@ const resolvers = {
       }
 
       const token = signToken(user);
+
       return { token, user };
     },
 
     removeUser: async (parent, args, context) => {
-        const { email } = args;
-        console.log(context);
-
-      if (context && context.user) {
+      if (context?.user) {
         return User.findOneAndDelete({ _id: context.user._id });
       }
 
@@ -94,8 +102,13 @@ const resolvers = {
     },
 
     // TODO: add Firebase refs for product images
-    addProduct: async (parent, args, context) => {
-      if (context.user.isAdmin || context.user.isSuper) {
+    addProduct: async (parent, args, { user }) => {
+      if (!user) {
+        throw new AuthenticationError(
+          "You must be logged in before adding products."
+        );
+      }
+      if (user.isAdmin || user.isSuper) {
         throw new AuthenticationError(
           "You must be an admin or super user to add or delete products!"
         );

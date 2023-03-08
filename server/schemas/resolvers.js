@@ -14,8 +14,7 @@ const resolvers = {
         );
       }
 
-      return User.find();
-      // TODO: return only necessary data
+      return User.find({}).select('-password');
     },
 
     user: async (parent, { userId }, { user }) => {
@@ -25,8 +24,7 @@ const resolvers = {
         );
       }
 
-      return User.findOne({ _id: userId });
-      // TODO: return only necessary data
+      return User.findOne({ _id: userId }, { select: '-password' });
     },
 
     products: async (parent, args, context) => {
@@ -41,7 +39,6 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, { name, email, password }, context) => {
       const checkUser = await User.findOne({ email });
-      // TODO: return only necessary data
 
       if (checkUser) {
         throw new ValidationError("User already exists!");
@@ -70,7 +67,7 @@ const resolvers = {
         throw new ValidationError("User already exists!");
       }
 
-      if (!(user?.isAdmin)) {
+      if (!user?.isAdmin) {
         throw new AuthenticationError(
           "You must be signed in as an admin to perform this action!"
         );
@@ -83,13 +80,14 @@ const resolvers = {
         isAdmin,
         isSuper,
       });
-      // TODO: return only necessary data
 
+      // Since mongoose.create method does not return JSON data, manually return data to ensure
+      // frontend knows admin/super user account was created.
       return { name, email, isAdmin, isSuper };
     },
 
     login: async (parent, { email, password }, context) => {
-      const user = await User.findOne({ email }); // TODO: return only necessary data
+      const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError("User does not exist.");

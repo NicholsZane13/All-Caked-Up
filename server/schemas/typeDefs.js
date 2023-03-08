@@ -21,7 +21,6 @@ const typeDefs = gql`
         _id: ID
         name: String
         email: String
-        password: String
         isAdmin: Boolean
         isSuper: Boolean
         favorites: [Favorite]!

@@ -14,8 +14,7 @@ const resolvers = {
         );
       }
 
-      return User.find();
-      // TODO: return only necessary data
+      return User.find({}).select("-password");
     },
 
     user: async (parent, { userId }, { user }) => {
@@ -25,8 +24,7 @@ const resolvers = {
         );
       }
 
-      return User.findOne({ _id: userId });
-      // TODO: return only necessary data
+      return User.findOne({ _id: userId }, { select: "-password" });
     },
 
     products: async (parent, args, context) => {
@@ -39,19 +37,20 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (
-      parent,
-      { name, email, password, isAdmin = false, isSuper = false },
-      context
-    ) => {
+    addUser: async (parent, { name, email, password }, context) => {
       const checkUser = await User.findOne({ email });
-      // TODO: return only necessary data
 
       if (checkUser) {
         throw new ValidationError("User already exists!");
       }
 
-      const user = await User.create({ name, email, password });
+      const user = await User.create({
+        name,
+        email,
+        password,
+        isAdmin: false,
+        isSuper: false,
+      });
 
       const token = signToken(user);
 
@@ -74,20 +73,21 @@ const resolvers = {
         );
       }
 
-      const superUser = await User.create({
+      await User.create({
         name,
         email,
         password,
         isAdmin,
         isSuper,
       });
-      // TODO: return only necessary data
 
-      return { superUser };
+      // Since mongoose.create method does not return JSON data, manually return data to ensure
+      // frontend knows admin/super user account was created.
+      return { name, email, isAdmin, isSuper };
     },
 
     login: async (parent, { email, password }, context) => {
-      const user = await User.findOne({ email }); // TODO: return only necessary data
+      const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError("User does not exist.");
@@ -121,7 +121,7 @@ const resolvers = {
     // TODO: add Firebase refs for product images
     addProduct: async (
       parent,
-      { name, price, photo_ref = "none", description, category, theme },
+      { name, price, photo_ref, description, category, theme },
       { user }
     ) => {
       // TODO: Attempt Firebase reference update here
@@ -132,14 +132,23 @@ const resolvers = {
         );
       }
 
-      if (!user.isAdmin && !user.isSuper) {
+      if (!(user.isAdmin || user.isSuper)) {
         throw new AuthenticationError(
           "You must be an admin or super user to add or delete products!"
         );
       }
 
       if (!name) {
-        throw new ValidationError("Product name was not provided");
+        throw new ValidationError("Please provide a name for this product.");
+      }
+
+      const checkProduct = await Product.findOne({ name });
+      if (checkProduct) {
+        throw new ValidationError("Product already exists!");
+      }
+
+      if (!photo_ref) {
+        photo_ref = "none";
       }
 
       const newProduct = Product.create({
@@ -154,24 +163,66 @@ const resolvers = {
       return newProduct;
     },
 
-    removeProduct: async (parent, args, { user }) => {
+    removeProduct: async (parent, { name }, { user }) => {
       if (!(user?.isAdmin || user?.isSuper)) {
         throw new AuthenticationError(
-          "You must be an admin or super user to add or delete products!"
+          "You must be logged in as an admin or super user to delete products!"
         );
       }
 
-      const { name } = args;
-
       if (!name) {
-        throw new ValidationError("Product does not exist.");
+        throw new ValidationError("Product name not supplied.");
       }
 
       const removedProduct = await Product.findOneAndDelete({ name });
 
       return removedProduct;
     },
-  },
+
+    addFavorite: async (parent, { name }, { user }) => {
+      if (!user) {
+        throw new AuthenticationError(
+          "You must be logged in to add a favorite product."
+        );
+      }
+
+      const targetProduct = await Product.findOne({ name });
+
+      if (!targetProduct) {
+        throw new ValidationError("That product does not seem to exist.");
+      }
+
+      const updatedUser = await User.findByIdAndUpdate(
+        user._id,
+        { $push: { favorites: targetProduct._id } },
+        { new: true }
+      );
+
+      return updatedUser;
+    },
+
+    removeFavorite: async (parent, { name }, { user }) => {
+      if (!user) {
+        throw new AuthenticationError(
+          "You must be logged in to add a favorite product."
+        );
+      }
+
+      const targetProduct = await Product.findOne({ name });
+
+      if (!targetProduct) {
+        throw new ValidationError("That product does not seem to exist.");
+      }
+
+      const updatedUser = await User.findByIdAndUpdate(
+        user._id,
+        { $pull: { favorites: targetProduct._id } },
+        { new: true }
+      );
+
+      return updatedUser;
+    },
+  }
 };
 
 module.exports = resolvers;

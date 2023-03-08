@@ -34,6 +34,13 @@ function Navbar() {
               </button>
             </Link>
           </li>
+          <li>
+            <Link to="/login">
+              <button className="text-right relative mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded">
+                Log In
+              </button>
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>
@@ -41,4 +48,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

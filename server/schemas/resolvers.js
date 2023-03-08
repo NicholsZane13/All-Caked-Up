@@ -14,7 +14,7 @@ const resolvers = {
         );
       }
 
-      return User.find({}).select('-password');
+      return User.find({}).select("-password");
     },
 
     user: async (parent, { userId }, { user }) => {
@@ -24,7 +24,7 @@ const resolvers = {
         );
       }
 
-      return User.findOne({ _id: userId }, { select: '-password' });
+      return User.findOne({ _id: userId }, { select: "-password" });
     },
 
     products: async (parent, args, context) => {
@@ -148,7 +148,7 @@ const resolvers = {
       }
 
       if (!photo_ref) {
-        photo_ref = "none"
+        photo_ref = "none";
       }
 
       const newProduct = Product.create({
@@ -178,14 +178,50 @@ const resolvers = {
 
       return removedProduct;
     },
-  },
 
-  addFavorite: async (parent, { name }, { user }) => {
+    addFavorite: async (parent, { name }, { user }) => {
+      if (!user) {
+        throw new AuthenticationError(
+          "You must be logged in to add a favorite product."
+        );
+      }
 
-  },
+      const targetProduct = await Product.findOne({ name });
 
-  removeFavorite: async (parent, { name }, { user }) => {
-    
+      if (!targetProduct) {
+        throw new ValidationError("That product does not seem to exist.");
+      }
+
+      const updatedUser = await User.findByIdAndUpdate(
+        user._id,
+        { $push: { favorites: targetProduct._id } },
+        { new: true }
+      );
+
+      return updatedUser;
+    },
+
+    removeFavorite: async (parent, { name }, { user }) => {
+      if (!user) {
+        throw new AuthenticationError(
+          "You must be logged in to add a favorite product."
+        );
+      }
+
+      const targetProduct = await Product.findOne({ name });
+
+      if (!targetProduct) {
+        throw new ValidationError("That product does not seem to exist.");
+      }
+
+      const updatedUser = await User.findByIdAndUpdate(
+        user._id,
+        { $pull: { favorites: targetProduct._id } },
+        { new: true }
+      );
+
+      return updatedUser;
+    },
   }
 };
 

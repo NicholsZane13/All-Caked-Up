@@ -12,18 +12,13 @@ const typeDefs = gql`
         theme: String
     }
 
-    type Favorite {
-        _id: ID
-        product_id: ID!
-    }
-
     type User {
         _id: ID
         name: String
         email: String
         isAdmin: Boolean
         isSuper: Boolean
-        favorites: [Favorite]!
+        favorites: [ID]!
     }
 
     type Auth {
@@ -45,6 +40,8 @@ const typeDefs = gql`
         removeUserSelf: User
         removeProduct(name: String!): Product
         addProduct(name: String!, price: Float, photo_ref: String, description: String, category: String, theme: String): Product
+        addFavorite(name: String!): User
+        removeFavorite(name: String!): User
     }
 `;
 

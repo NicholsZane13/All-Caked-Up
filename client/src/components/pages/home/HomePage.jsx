@@ -23,13 +23,19 @@ function HomePage() {
         </div>
         <div>
           <p className="font-Indie text-tan text-lg max-w-xl m-6 font-bold">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-            mollitia, molestiae quas vel sint commodi repudiandae consequuntur
-            voluptatum laborum numquam blanditiis harum quisquam eius sed odit
-            fugiat iusto fuga praesentium optio, eaque rerum! Provident
-            similique accusantium nemo autem. Veritatis obcaecati tenetur iure
-            eius earum ut molestias architecto voluptate aliquam nihil, eveniet
-            aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+            Our mission at All Caked Up is to create a memorable and enjoyable
+            experience for every customer by providing the finest quality
+            coffee, custom cakes, and fresh pastries daily. Our commitment to
+            exceeding customer expectations is at the core of everything we do,
+            and we strive to create a warm and welcoming atmosphere where our
+            customers can indulge in the decadent flavors of our treats. Our
+            founder's journey as a retail cake decorator has evolved into a
+            passion for baking and sharing gourmet pastries with the community.
+            At All Caked Up, we take pride in using only the freshest
+            ingredients and baking everything from scratch to ensure that every
+            bite is a delightful experience. Join us on this sweet journey, and
+            let us satisfy your cravings with our exceptional products and
+            exceptional service.
           </p>
         </div>
       </div>

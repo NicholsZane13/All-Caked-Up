@@ -32,10 +32,12 @@ function Portfolio() {
   const displayModal = () => {
     if (displayState) {
       return (
-        <ImageDisplay
-          imageCategory={imageCategory}
-          setDisplayState={setDisplayState}
-        />
+        <div class="container grid grid-rows-3 gap-2 mx-auto">
+          <ImageDisplay
+            imageCategory={imageCategory}
+            setDisplayState={setDisplayState}
+          />
+        </div>
       );
     } else {
       return <></>;

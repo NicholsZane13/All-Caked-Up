@@ -60,7 +60,9 @@ function ImageDisplay({ setDisplayState, imageCategory }) {
   return createPortal(
     <div className="imageDisplay">
       {imageState.map((img) => (
-        <img className="w-full h-64" src={img}></img>
+        <div className="w-full rounded">
+          <img className="" src={img}></img>
+        </div>
       ))}
       <button className="modal-exit-btn" onClick={exitModal}>
         <RxExit size={"1.5rem"} />

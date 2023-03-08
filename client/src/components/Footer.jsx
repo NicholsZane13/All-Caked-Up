@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="flex-shrink-0">
+    <footer className="flex-shrink-0 ">
       <div className="flex flex-col items-center justify-center bg-green text-white h-24 mb-auto">
         <div className="flex justify-center gap-4">
           <a href="https://www.instagram.com/all_caked_up_bytrinity/">

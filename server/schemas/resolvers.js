@@ -7,20 +7,26 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    users: async (parent, args, context) => {
-      if (!context.user) {
-        throw new AuthenticationError("You need to be logged in!");
+    users: async (parent, args, { user }) => {
+      if (!(user?.isAdmin || user?.isSuper)) {
+        throw new AuthenticationError(
+          "You need to be logged in as admin/super to perform this query."
+        );
       }
 
       return User.find();
+      // TODO: return only necessary data
     },
 
-    user: async (parent, { userId }, context) => {
-      if (!context.user) {
-        throw new AuthenticationError("You need to be logged in!");
+    user: async (parent, { userId }, { user }) => {
+      if (!(user?.isAdmin || user?.isSuper)) {
+        throw new AuthenticationError(
+          "You need to be logged in as admin/super to perform this query."
+        );
       }
 
       return User.findOne({ _id: userId });
+      // TODO: return only necessary data
     },
 
     products: async (parent, args, context) => {
@@ -38,46 +44,53 @@ const resolvers = {
       { name, email, password, isAdmin = false, isSuper = false },
       context
     ) => {
-      if (context && context.user && context.user.isAdmin) {
-        const user = await User.create({
-          name,
-          email,
-          password,
-          isAdmin,
-          isSuper,
-        });
+      const checkUser = await User.findOne({ email });
+      // TODO: return only necessary data
 
-        const token = signToken(user);
-
-        return { token, user };
-      } else {
-        const checkUser = await User.findOne({ email });
-
-        if (checkUser) {
-          throw new ValidationError("User already exists!");
-        }
-
-        const user = await User.create({ name, email, password });
-
-        const token = signToken(user);
-
-        return { token, user };
+      if (checkUser) {
+        throw new ValidationError("User already exists!");
       }
+
+      const user = await User.create({ name, email, password });
+
+      const token = signToken(user);
+
+      return { token, user };
     },
 
     addSuperOrAdmin: async (
-        parent,
-        { name, email, password, isAdmin = false, isSuper },
-        context
+      parent,
+      { name, email, password, isAdmin, isSuper },
+      { user }
     ) => {
+      const checkUser = await User.findOne({ email });
+      if (checkUser) {
+        throw new ValidationError("User already exists!");
+      }
 
+      if (!user?.isAdmin) {
+        throw new AuthenticationError(
+          "You must be signed in as an admin to perform this action!"
+        );
+      }
+
+      const superUser = await User.create({
+        name,
+        email,
+        password,
+        isAdmin,
+        isSuper,
+      });
+      // TODO: return only necessary data
+
+      return { superUser };
     },
 
     login: async (parent, { email, password }, context) => {
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email }); // TODO: return only necessary data
 
       if (!user) {
-        throw new AuthenticationError("User email does not exist.");
+        throw new AuthenticationError("User does not exist.");
       }
 
       const correctPw = await user.isCorrectPassword(password);
@@ -91,36 +104,45 @@ const resolvers = {
       return { token, user };
     },
 
-    removeUser: async (parent, args, context) => {
-      if (context?.user) {
-        return User.findOneAndDelete({ _id: context.user._id });
+    removeUserSelf: async (parent, args, { user }) => {
+      if (!user) {
+        throw new AuthenticationError(
+          "You must be logged in to delete your account."
+        );
       }
 
-      throw new AuthenticationError(
-        "You must be logged in to delete user account."
-      );
+      return User.findOneAndDelete({ _id: user._id });
+
+      // TODO: add token to blacklist
     },
 
+    // TODO: add a removeUser mutation for admin removal of user
+
     // TODO: add Firebase refs for product images
-    addProduct: async (parent, args, { user }) => {
+    addProduct: async (
+      parent,
+      { name, price, photo_ref = "none", description, category, theme },
+      { user }
+    ) => {
+      // TODO: Attempt Firebase reference update here
+
       if (!user) {
         throw new AuthenticationError(
           "You must be logged in before adding products."
         );
       }
-      if (user.isAdmin || user.isSuper) {
+
+      if (!user.isAdmin && !user.isSuper) {
         throw new AuthenticationError(
           "You must be an admin or super user to add or delete products!"
         );
       }
 
-      const { name, price, photo_ref, description, category, theme } = args;
-
       if (!name) {
         throw new ValidationError("Product name was not provided");
       }
 
-      const product = await Product.create({
+      const newProduct = Product.create({
         name,
         price,
         photo_ref,
@@ -129,11 +151,11 @@ const resolvers = {
         theme,
       });
 
-      return product;
+      return newProduct;
     },
 
-    removeProduct: async (parent, args, context) => {
-      if (!context.user.isAdmin && !context.user.isSuper) {
+    removeProduct: async (parent, args, { user }) => {
+      if (!(user?.isAdmin || user?.isSuper)) {
         throw new AuthenticationError(
           "You must be an admin or super user to add or delete products!"
         );
@@ -141,9 +163,13 @@ const resolvers = {
 
       const { name } = args;
 
-      const product = await Product.findOneAndDelete({ name });
+      if (!name) {
+        throw new ValidationError("Product does not exist.");
+      }
 
-      return product;
+      const removedProduct = await Product.findOneAndDelete({ name });
+
+      return removedProduct;
     },
   },
 };

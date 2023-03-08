@@ -39,11 +39,7 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (
-      parent,
-      { name, email, password, isAdmin = false, isSuper = false },
-      context
-    ) => {
+    addUser: async (parent, { name, email, password }, context) => {
       const checkUser = await User.findOne({ email });
       // TODO: return only necessary data
 
@@ -51,7 +47,13 @@ const resolvers = {
         throw new ValidationError("User already exists!");
       }
 
-      const user = await User.create({ name, email, password });
+      const user = await User.create({
+        name,
+        email,
+        password,
+        isAdmin: false,
+        isSuper: false,
+      });
 
       const token = signToken(user);
 
@@ -68,13 +70,13 @@ const resolvers = {
         throw new ValidationError("User already exists!");
       }
 
-      if (!user?.isAdmin) {
+      if (!(user?.isAdmin)) {
         throw new AuthenticationError(
           "You must be signed in as an admin to perform this action!"
         );
       }
 
-      const superUser = await User.create({
+      await User.create({
         name,
         email,
         password,
@@ -83,7 +85,7 @@ const resolvers = {
       });
       // TODO: return only necessary data
 
-      return { superUser };
+      return { name, email, isAdmin, isSuper };
     },
 
     login: async (parent, { email, password }, context) => {

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Footer() {
+function Contact() {
   return (
     <footer>
       <div className="footer-container">
@@ -24,4 +24,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Contact;

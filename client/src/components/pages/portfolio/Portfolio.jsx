@@ -14,17 +14,17 @@ function Portfolio() {
     },
     {
       id: 2,
-      src: "https://source.unsplash.com/random/2",
+      src: "https://drive.google.com/uc?export=view&id=1ot-Mb9fpwvEEIPgm8NtMNxSgUKF_Sx6s",
       text: "Themed cakes",
     },
     {
       id: 3,
-      src: "https://source.unsplash.com/random/3",
+      src: "https://drive.google.com/uc?export=view&id=1mg3EGEYsdfkzt_Tr9oYCt2uE1e5p7yX-",
       text: "Custom cookies",
     },
     {
       id: 4,
-      src: "https://source.unsplash.com/random/4",
+      src: "https://drive.google.com/uc?export=view&id=1w3WyyXLInPwQHkJNQ1RI35NmhrUgxxLD",
       text: "Custom cupcakes",
     },
   ];
@@ -48,11 +48,11 @@ function Portfolio() {
   };
 
   return (
-    <div className="flex flex-wrap -mx-2">
+    <div className="grid grid-rows-2 grid-flow-col gap-1 pt-20 mx-2">
       {pictures.map((picture) => (
         <div
           key={picture.id}
-          className="p-10 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-2 py-2 relative cursor-pointer"
+          className="pt-10 w-full sm:w-1/2 md:w-1/3 px-2 py-2 relative cursor-pointer"
           onMouseEnter={() => setHovered(picture.id)}
           onMouseLeave={() => setHovered(null)}
           onClick={(e) => handleImageDisplay(e)}
@@ -64,7 +64,7 @@ function Portfolio() {
             className="w-full h-auto"
           />
           {hovered === picture.id && (
-            <div className="absolute bottom-0 left-0 right-0 py-2 px-4 bg-black text-white">
+            <div className="absolute bottom-0 left-0 right-0 py-2 px-4 bg-black text-black">
               <p className="text-lg font-bold">{picture.text}</p>
             </div>
           )}

@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const favoriteSchema = require('./Favorite');
 
 const userSchema = new Schema({
   name: {
@@ -36,7 +35,12 @@ const userSchema = new Schema({
     type: Boolean,
     default: false
   },
-  favorites: [favoriteSchema]
+  favorites: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Product'
+    }
+  ]
 },
 { timestamps: true });
 

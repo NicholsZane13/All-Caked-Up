@@ -13,3 +13,29 @@
 button:focus {
   outline: none; /* Removes the default focus outline */
 }
+.imageDisplay {
+  position: absolute;
+  z-index: 3;
+  border: 5px solid black;
+  border-radius: 5px;
+  background-color: white;
+  width: 90vw;
+  height: 90vh;
+  margin: auto;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.imageDisplay > img {
+  width: 33%;
+  height: 33%;
+}
+
+.modal-exit-btn {
+  color: red;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+
+}

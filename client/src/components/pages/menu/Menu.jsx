@@ -47,45 +47,44 @@ function Menu() {
   };
 
   return (
-    <div>
+    <div className='pt-40 bg-greenL'>
       <button
-        className={activeButton === 'Coffee' ? 'active' : ''}
+        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${activeButton === 'Coffee' ? 'active' : ''}`}
         onClick={() => handleButtonClick('Coffee')}
       >
         Coffee
       </button>
       <button
-        className={activeButton === 'Donuts' ? 'active' : ''}
+        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${activeButton === 'Donuts' ? 'active' : ''}`}
         onClick={() => handleButtonClick('Donuts')}
       >
         Donuts
       </button>
       <button
-        className={activeButton === 'Pastries' ? 'active' : ''}
+        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${activeButton === 'Pastries' ? 'active' : ''}`}
         onClick={() => handleButtonClick('Pastries')}
       >
         Pastries
       </button>
       <button
-        className={activeButton === 'Cupcakes' ? 'active' : ''}
+        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${activeButton === 'Cupcakes' ? 'active' : ''}`}
         onClick={() => handleButtonClick('Cupcakes')}
       >
         Cupcakes
       </button>
       <button
-        className={activeButton === 'Cookies' ? 'active' : ''}
+        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${activeButton === 'Cookies' ? 'active' : ''}`}
         onClick={() => handleButtonClick('Cookies')}
       >
         Cookies
       </button>
       <button
-        className={activeButton === 'Cakes' ? 'active' : ''}
+        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${activeButton === 'Cakes' ? 'active' : ''}`}
         onClick={() => handleButtonClick('Cakes')}
       >
         Cakes
       </button>
-
-      
+  
       <div className="picture-grid">
         {pictures[activeButton] &&
           pictures[activeButton].map((picture) => (
@@ -94,6 +93,7 @@ function Menu() {
       </div>
     </div>
   );
+  
 }
 
 export default Menu;

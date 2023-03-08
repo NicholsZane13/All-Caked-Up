@@ -43,7 +43,7 @@ const typeDefs = gql`
         addSuperOrAdmin(name: String!, email: String!, password: String!, isAdmin: Boolean!, isSuper: Boolean!): User
         login(email: String!, password: String!): Auth
         removeUserSelf: User
-        removeProduct: Product
+        removeProduct(name: String!): Product
         addProduct(name: String!, price: Float, photo_ref: String, description: String, category: String, theme: String): Product
     }
 `;

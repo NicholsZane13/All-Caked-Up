@@ -121,7 +121,7 @@ const resolvers = {
     // TODO: add Firebase refs for product images
     addProduct: async (
       parent,
-      { name, price, photo_ref = "none", description, category, theme },
+      { name, price, photo_ref, description, category, theme },
       { user }
     ) => {
       // TODO: Attempt Firebase reference update here
@@ -132,14 +132,23 @@ const resolvers = {
         );
       }
 
-      if (!user.isAdmin && !user.isSuper) {
+      if (!(user.isAdmin || user.isSuper)) {
         throw new AuthenticationError(
           "You must be an admin or super user to add or delete products!"
         );
       }
 
       if (!name) {
-        throw new ValidationError("Product name was not provided");
+        throw new ValidationError("Please provide a name for this product.");
+      }
+
+      const checkProduct = await Product.findOne({ name });
+      if (checkProduct) {
+        throw new ValidationError("Product already exists!");
+      }
+
+      if (!photo_ref) {
+        photo_ref = "none"
       }
 
       const newProduct = Product.create({
@@ -154,17 +163,15 @@ const resolvers = {
       return newProduct;
     },
 
-    removeProduct: async (parent, args, { user }) => {
+    removeProduct: async (parent, { name }, { user }) => {
       if (!(user?.isAdmin || user?.isSuper)) {
         throw new AuthenticationError(
-          "You must be an admin or super user to add or delete products!"
+          "You must be logged in as an admin or super user to delete products!"
         );
       }
 
-      const { name } = args;
-
       if (!name) {
-        throw new ValidationError("Product does not exist.");
+        throw new ValidationError("Product name not supplied.");
       }
 
       const removedProduct = await Product.findOneAndDelete({ name });
@@ -172,6 +179,14 @@ const resolvers = {
       return removedProduct;
     },
   },
+
+  addFavorite: async (parent, { name }, { user }) => {
+
+  },
+
+  removeFavorite: async (parent, { name }, { user }) => {
+    
+  }
 };
 
 module.exports = resolvers;

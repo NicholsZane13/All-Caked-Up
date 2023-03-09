@@ -1,7 +1,7 @@
 export const products = [
   {
     name: "1",
-    price: 40.0,
+    price: "40.0",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -10,7 +10,7 @@ export const products = [
   },
   {
     name: "2",
-    price: 80.0,
+    price: "80.0",
     photo_ref: "none",
     description: "Double Layer",
     category: "Cake",
@@ -19,7 +19,7 @@ export const products = [
   },
   {
     name: "3",
-    price: 55.0,
+    price: "55.0",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -28,7 +28,7 @@ export const products = [
   },
   {
     name: "4",
-    price: 110.0,
+    price: "110.0",
     photo_ref: "none",
     description: "Double Layer",
     category: "Cake",
@@ -37,7 +37,7 @@ export const products = [
   },
   {
     name: "5",
-    price: 85.0,
+    price: "85.0",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -46,7 +46,7 @@ export const products = [
   },
   {
     name: "6",
-    price: 35,
+    price: "35",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -55,7 +55,7 @@ export const products = [
   },
   {
     name: "7",
-    price: 45.0,
+    price: "45.0",
     photo_ref: "none",
     description: "Double Layer",
     subcategory: "Six Inches",
@@ -63,7 +63,7 @@ export const products = [
   },
   {
     name: "8",
-    price: 60.0,
+    price: "60.0",
     photo_ref: "none",
     description: "Triple Layer",
     category: "Cake",
@@ -72,7 +72,7 @@ export const products = [
   },
   {
     name: "9",
-    price: 35,
+    price: "35",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -81,7 +81,7 @@ export const products = [
   },
   {
     name: "10",
-    price: 45,
+    price: "45",
     photo_ref: "none",
     description: "Double Layer",
     category: "Cake",
@@ -90,7 +90,7 @@ export const products = [
   },
   {
     name: "11",
-    price: 60,
+    price: "60",
     photo_ref: "none",
     description: "Tripple Layer",
     category: "Cake",
@@ -99,7 +99,7 @@ export const products = [
   },
   {
     name: "12",
-    price: 40,
+    price: "40",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -108,7 +108,7 @@ export const products = [
   },
   {
     name: "13",
-    price: 80,
+    price: "80",
     photo_ref: "none",
     description: "Double Layer",
     category: "Cake",
@@ -117,7 +117,7 @@ export const products = [
   },
   {
     name: "14",
-    price: 0,
+    price: "0",
     photo_ref: "none",
     description: "Chocolate, White, Marble, Yellow, Red Velvet, Strawberry, and Tres Leches",
     category: "Cake",
@@ -126,7 +126,7 @@ export const products = [
   },
   {
     name: "15",
-    price: 420.69,
+    price: "420.69",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -135,7 +135,7 @@ export const products = [
   },
   {
     name: "16",
-    price: 420.69,
+    price: "420.69",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -144,7 +144,7 @@ export const products = [
   },
   {
     name: "17",
-    price: 420.69,
+    price: "420.69",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -153,7 +153,7 @@ export const products = [
   },
   {
     name: "18",
-    price: 420.69,
+    price: "420.69",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -162,7 +162,7 @@ export const products = [
   },
   {
     name: "19",
-    price: 420.69,
+    price: "420.69",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -171,7 +171,7 @@ export const products = [
   },
   {
     name: "20",
-    price: 420.69,
+    price: "420.69",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -180,7 +180,7 @@ export const products = [
   },
   {
     name: "21",
-    price: 420.69,
+    price: "420.69",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -189,7 +189,7 @@ export const products = [
   },
   {
     name: "22",
-    price: 420.69,
+    price: "420.69",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -198,7 +198,7 @@ export const products = [
   },
   {
     name: "23",
-    price: 420.69,
+    price: "420.69",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -207,7 +207,7 @@ export const products = [
   },
   {
     name: "24",
-    price: 420.69,
+    price: "420.69",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -216,7 +216,7 @@ export const products = [
   },
   {
     name: "25",
-    price: 420.69,
+    price: "420.69",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -225,7 +225,7 @@ export const products = [
   },
   {
     name: "26",
-    price: 420.69,
+    price: "420.69",
     photo_ref: "none",
     description: "Single Layer",
     category: "Drink",

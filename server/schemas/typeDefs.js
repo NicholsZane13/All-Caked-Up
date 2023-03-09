@@ -5,10 +5,11 @@ const typeDefs = gql`
     type Product {
         _id: ID
         name: String
-        price: Float
+        price: String
         photo_ref: String
         description: String
         category: String
+        subcategory: String
         theme: String
     }
 
@@ -39,7 +40,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         removeUserSelf: User
         removeProduct(name: String!): Product
-        addProduct(name: String!, price: Float, photo_ref: String, description: String, category: String, theme: String): Product
+        addProduct(name: String!, price: String, photo_ref: String, description: String, category: String, subcategory: String, theme: String): Product
         addFavorite(name: String!): User
         removeFavorite(name: String!): User
     }

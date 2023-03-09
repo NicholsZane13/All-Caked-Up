@@ -29,7 +29,7 @@ const cakeIcon = (
 function ServicePage() {
   return (
     <>
-      <div className="bg-green justify-center text-center pt-20 pb-10">
+      <div className="bg-green justify-center text-center pt-40 pb-10">
         <h1 className="font-Gloock text-tan text-4xl md:text-7xl mb-1 md:mb-3 font-bold pb-5">
           Services We Provide!
         </h1>

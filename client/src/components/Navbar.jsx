@@ -9,7 +9,7 @@ function Navbar() {
   };
 
   return (
-    <div className="top-0 bg-green z-10 h-20 pr-4 flex items-right justify-end">
+    <div className="top-0 bg-green z-10 h-10 pr-4 flex items-right justify-end">
       <div className="flex justify-between w-full">
         <ul className="flex justify-end bg-green">
           <li>

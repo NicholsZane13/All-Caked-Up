@@ -7,8 +7,8 @@ const productSchema = new Schema({
     unique: true,
   },
   price: {
-    type: Number,
-    default: 5.00,
+    type: String,
+    default: 'No Price Listed',
   },
   photo_ref: {
     type: String
@@ -22,6 +22,10 @@ const productSchema = new Schema({
   category: {
     type: String,
     default: 'category_NA'
+  },
+  subcategory: {
+    type: String,
+    default: 'subcategory_NA'
   },
   theme: {
     type: String,

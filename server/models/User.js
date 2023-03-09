@@ -1,13 +1,10 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const favoriteSchema = require('./Favorite');
-require('dotenv').config();
 
 const userSchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   email: {
@@ -26,7 +23,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
     match: [
-      /^(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z])(?=\D*\d)(?=[^!?#%@$^&*(){}[\]\+=\-_]*[!#%])[A-Za-z0-9!?#%@$^&*(){}[\]\+=\-_]{8,32}$/,
+      /^(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z])(?=\D*\d)(?=[^!?#%@$^&*(){}[\]\+=\-_]*[!?#%@$^&*(){}[\]\+=\-_])[A-Za-z0-9!?#%@$^&*(){}[\]\+=\-_]{8,32}$/,
       'Your password contains unallowed characters.'
     ]
   },
@@ -38,15 +35,22 @@ const userSchema = new Schema({
     type: Boolean,
     default: false
   },
-  favorites: [favoriteSchema]
+  favorites: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Product'
+    }
+  ]
 },
 { timestamps: true });
 
 // set up pre-save middleware to create password
 userSchema.pre("save", async function (next) {
   if (this.isNew || this.isModified("password")) {
-    const saltRounds = process.env.SALT_ROUNDS;
-    this.password = bcrypt.hash(this.password, saltRounds);
+    const rounds = process.env.SALT_ROUNDS;
+    const salt = await bcrypt.genSalt(Number(rounds));
+    const hashedPassword = await bcrypt.hash(this.password, salt);
+    this.password = hashedPassword;
   }
 
   next();

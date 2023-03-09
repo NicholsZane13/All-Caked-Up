@@ -1,7 +1,7 @@
 export const products = [
   {
     name: "1",
-    price: 40.0,
+    price: "40.0",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -10,7 +10,7 @@ export const products = [
   },
   {
     name: "2",
-    price: 80.0,
+    price: "80.0",
     photo_ref: "none",
     description: "Double Layer",
     category: "Cake",
@@ -19,7 +19,7 @@ export const products = [
   },
   {
     name: "3",
-    price: 55.0,
+    price: "55.0",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -28,7 +28,7 @@ export const products = [
   },
   {
     name: "4",
-    price: 110.0,
+    price: "110.0",
     photo_ref: "none",
     description: "Double Layer",
     category: "Cake",
@@ -37,7 +37,7 @@ export const products = [
   },
   {
     name: "5",
-    price: 85.0,
+    price: "85.0",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -46,7 +46,7 @@ export const products = [
   },
   {
     name: "6",
-    price: 35,
+    price: "35",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -55,7 +55,7 @@ export const products = [
   },
   {
     name: "7",
-    price: 45.0,
+    price: "45.0",
     photo_ref: "none",
     description: "Double Layer",
     subcategory: "Six Inches",
@@ -63,7 +63,7 @@ export const products = [
   },
   {
     name: "8",
-    price: 60.0,
+    price: "60.0",
     photo_ref: "none",
     description: "Triple Layer",
     category: "Cake",
@@ -72,7 +72,7 @@ export const products = [
   },
   {
     name: "9",
-    price: 35,
+    price: "35",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -81,7 +81,7 @@ export const products = [
   },
   {
     name: "10",
-    price: 45,
+    price: "45",
     photo_ref: "none",
     description: "Double Layer",
     category: "Cake",
@@ -90,7 +90,7 @@ export const products = [
   },
   {
     name: "11",
-    price: 60,
+    price: "60",
     photo_ref: "none",
     description: "Tripple Layer",
     category: "Cake",
@@ -99,7 +99,7 @@ export const products = [
   },
   {
     name: "12",
-    price: 40,
+    price: "40",
     photo_ref: "none",
     description: "Single Layer",
     category: "Cake",
@@ -108,7 +108,7 @@ export const products = [
   },
   {
     name: "13",
-    price: 80,
+    price: "80",
     photo_ref: "none",
     description: "Double Layer",
     category: "Cake",
@@ -117,7 +117,7 @@ export const products = [
   },
   {
     name: "14",
-    price: 0,
+    price: "0",
     photo_ref: "none",
     description:
       "Chocolate, White, Marble, Yellow, Red Velvet, Strawberry, and Tres Leches",
@@ -127,7 +127,7 @@ export const products = [
   },
   {
     name: "15",
-    price: 0,
+    price: "0",
     photo_ref: "none",
     description:
       "American Buttercream, Whipped Icing, Peanut Butter Buttercream, Cream Cheese, Cookies and Cream",
@@ -137,7 +137,7 @@ export const products = [
   },
   {
     name: "16",
-    price: 0,
+    price: "0",
     photo_ref: "none",
     description:
       "Strawberry, Bavarian, Chocolate Ganache, $5 extra depending on size of cake",
@@ -147,7 +147,7 @@ export const products = [
   },
   {
     name: "17",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Churro",
     category: "Cookie",
@@ -156,7 +156,7 @@ export const products = [
   },
   {
     name: "18",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Monster",
     category: "Cookie",
@@ -165,7 +165,7 @@ export const products = [
   },
   {
     name: "19",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Twix",
     category: "Cookie",
@@ -174,7 +174,7 @@ export const products = [
   },
   {
     name: "20",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Turtle",
     category: "Cookie",
@@ -183,7 +183,7 @@ export const products = [
   },
   {
     name: "21",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Triple Chocolate",
     category: "Cookie",
@@ -192,7 +192,7 @@ export const products = [
   },
   {
     name: "22",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "White Chocolate Macadamia Nut",
     category: "Cookie",
@@ -201,7 +201,7 @@ export const products = [
   },
   {
     name: "23",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Cookies and Cream",
     category: "Cookie",
@@ -210,7 +210,7 @@ export const products = [
   },
   {
     name: "24",
-    price: 6,
+    price: "6",
     photo_ref: "none",
     description: "Make it a Sandwhich!",
     category: "Cookie",
@@ -219,7 +219,7 @@ export const products = [
   },
   {
     name: "25",
-    price: 1.5,
+    price: "1.5",
     photo_ref: "none",
     description: "Chocolate Chip",
     category: "Cookie",
@@ -228,7 +228,7 @@ export const products = [
   },
   {
     name: "26",
-    price: 1.5,
+    price: "1.5",
     photo_ref: "none",
     description: "Red Velvet",
     category: "Cookie",
@@ -237,7 +237,7 @@ export const products = [
   },
   {
     name: "27",
-    price: 1.5,
+    price: "1.5",
     photo_ref: "none",
     description: "Chocolate Chunk",
     category: "Cookie",
@@ -246,7 +246,7 @@ export const products = [
   },
   {
     name: "28",
-    price: 1.5,
+    price: "1.5",
     photo_ref: "none",
     description: "Oatmeal",
     category: "Cookie",
@@ -255,7 +255,7 @@ export const products = [
   },
   {
     name: "29",
-    price: 1.5,
+    price: "1.5",
     photo_ref: "none",
     description: "Oatmeal Raisin",
     category: "Cookie",
@@ -264,7 +264,7 @@ export const products = [
   },
   {
     name: "30",
-    price: 1.5,
+    price: "1.5",
     photo_ref: "none",
     description: "Snickerdoodle",
     category: "Cookie",
@@ -273,7 +273,7 @@ export const products = [
   },
   {
     name: "31",
-    price: 1.5,
+    price: "1.5",
     photo_ref: "none",
     description: "M&M",
     category: "Cookie",
@@ -282,7 +282,7 @@ export const products = [
   },
   {
     name: "32",
-    price: 1.5,
+    price: "1.5",
     photo_ref: "none",
     description: "Peanut Butter",
     category: "Cookie",
@@ -291,7 +291,7 @@ export const products = [
   },
   {
     name: "33",
-    price: 1.5,
+    price: "1.5",
     photo_ref: "none",
     description: "Sugar",
     category: "Cookie",
@@ -300,7 +300,7 @@ export const products = [
   },
   {
     name: "34",
-    price: 4,
+    price: "4",
     photo_ref: "none",
     description: "Make it a Sandwich!",
     category: "Cookie",
@@ -309,7 +309,7 @@ export const products = [
   },
   {
     name: "35",
-    price: 3,
+    price: "3",
     photo_ref: "none",
     description: "Chocolate Chip",
     category: "Pastry",
@@ -318,7 +318,7 @@ export const products = [
   },
   {
     name: "35",
-    price: 3,
+    price: "3",
     photo_ref: "none",
     description: "Blueberry Muffins",
     category: "Pastry",
@@ -327,7 +327,7 @@ export const products = [
   },
   {
     name: "36",
-    price: 3.5,
+    price: "3.5",
     photo_ref: "none",
     description: "Brownies",
     category: "Pastry",
@@ -345,7 +345,7 @@ export const products = [
   },
   {
     name: "38",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Coffee Cake Slice",
     category: "Pastry",
@@ -354,7 +354,7 @@ export const products = [
   },
   {
     name: "39",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Chocolate",
     category: "Cupcake",
@@ -363,7 +363,7 @@ export const products = [
   },
   {
     name: "40",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Peanut Butter",
     category: "Cupcake",
@@ -372,7 +372,7 @@ export const products = [
   },
   {
     name: "41",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Red Velvet",
     category: "Cupcake",
@@ -381,7 +381,7 @@ export const products = [
   },
   {
     name: "42",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Birthday Cake",
     category: "Cupcake",
@@ -390,7 +390,7 @@ export const products = [
   },
   {
     name: "43",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Cookies and Cream",
     category: "Cupcake",
@@ -399,7 +399,7 @@ export const products = [
   },
   {
     name: "44",
-    price: 1.25,
+    price: "1.25",
     photo_ref: "none",
     description: "Long Johns",
     category: "Donut",
@@ -409,7 +409,7 @@ export const products = [
   },
   {
     name: "45",
-    price: 1.75,
+    price: "1.75",
     photo_ref: "none",
     description: "Bismarks",
     category: "Donut",
@@ -418,7 +418,7 @@ export const products = [
   },
   {
     name: "46",
-    price: 1.75,
+    price: "1.75",
     photo_ref: "none",
     description: "Boston Cream Donuts",
     category: "Donut",
@@ -427,7 +427,7 @@ export const products = [
   },
   {
     name: "47",
-    price: 1.25,
+    price: "1.25",
     photo_ref: "none",
     description: "Yeast Donuts",
     category: "Donut",
@@ -437,7 +437,7 @@ export const products = [
   },
   {
     name: "48",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Donut Holes",
     category: "Donut",
@@ -446,7 +446,7 @@ export const products = [
   },
   {
     name: "49",
-    price: 1.25,
+    price: "1.25",
     photo_ref: "none",
     description: "Cake Donuts",
     category: "Donut",
@@ -455,7 +455,7 @@ export const products = [
   },
   {
     name: "50",
-    price: 1.75,
+    price: "1.75",
     photo_ref: "none",
     description: "Twists",
     category: "Donut",
@@ -464,7 +464,7 @@ export const products = [
   },
   {
     name: "51",
-    price: 1.75,
+    price: "1.75",
     photo_ref: "none",
     description: "Apple Fritters",
     category: "Donut",
@@ -473,7 +473,7 @@ export const products = [
   },
   {
     name: "52",
-    price: 1.75,
+    price: "1.75",
     photo_ref: "none",
     description: "Peanut Butter Pretzel",
     category: "Donut",
@@ -482,7 +482,7 @@ export const products = [
   },
   {
     name: "53",
-    price: 1.75,
+    price: "1.75",
     photo_ref: "none",
     description: "Twists",
     category: "Donut",
@@ -491,7 +491,7 @@ export const products = [
   },
   {
     name: "54",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Americano",
     category: "Drink",
@@ -500,7 +500,7 @@ export const products = [
   },
   {
     name: "55",
-    price: 3.5,
+    price: "3.5",
     photo_ref: "none",
     description: "Latte",
     category: "Drink",
@@ -509,7 +509,7 @@ export const products = [
   },
   {
     name: "56",
-    price: 4.25,
+    price: "4.25",
     photo_ref: "none",
     description: "Carmel Machiato",
     category: "Drink",
@@ -519,7 +519,7 @@ export const products = [
 
   {
     name: "57",
-    price: 3.75,
+    price: "3.75",
     photo_ref: "none",
     description: "Mocha",
     category: "Drink",
@@ -529,7 +529,7 @@ export const products = [
 
   {
     name: "58",
-    price: 2,
+    price: "2",
     photo_ref: "none",
     description: "Espresso",
     category: "Drink",
@@ -539,7 +539,7 @@ export const products = [
 
   {
     name: "59",
-    price: 1.75,
+    price: "1.75",
     photo_ref: "none",
     description: "Onyx",
     category: "Drink",
@@ -549,7 +549,7 @@ export const products = [
 
   {
     name: "60",
-    price: 3.5,
+    price: "3.5",
     photo_ref: "none",
     description: "Onyx Bottomless Cup",
     category: "Drink",
@@ -558,7 +558,7 @@ export const products = [
   },
   {
     name: "61",
-    price: 4,
+    price: "4",
     photo_ref: "none",
     description: "Pour Over",
     category: "Drink",
@@ -567,7 +567,7 @@ export const products = [
   },
   {
     name: "61",
-    price: 3.25,
+    price: "3.25",
     photo_ref: "none",
     description: "Chai Latte",
     category: "Drink",
@@ -576,7 +576,7 @@ export const products = [
   },
   {
     name: "62",
-    price: 3,
+    price: "3",
     photo_ref: "none",
     description: "Chai Tea",
     category: "Drink",
@@ -586,7 +586,7 @@ export const products = [
 
   {
     name: "63",
-    price: 3.25,
+    price: "3.25",
     photo_ref: "none",
     description: "London Fog",
     category: "Drink",
@@ -596,7 +596,7 @@ export const products = [
 
   {
     name: "64",
-    price: 3.75,
+    price: "3.75",
     photo_ref: "none",
     description: "Frappes",
     category: "Drink",
@@ -606,7 +606,7 @@ export const products = [
 
   {
     name: "65",
-    price: 4,
+    price: "4",
     photo_ref: "none",
     description: "Crush Fruit Smoothies",
     category: "Drink",
@@ -616,7 +616,7 @@ export const products = [
 
   {
     name: "66",
-    price: 1.75,
+    price: "1.75",
     photo_ref: "none",
     description: "Iced Tea",
     category: "Drink",
@@ -626,7 +626,7 @@ export const products = [
 
   {
     name: "67",
-    price: 2.5,
+    price: "2.5",
     photo_ref: "none",
     description: "Loose Leaf",
     category: "Drink",
@@ -635,7 +635,7 @@ export const products = [
   },
   {
     name: "68",
-    price: 0.45,
+    price: "0.45",
     photo_ref: "none",
     description: "House Made Syrups",
     category: "Drink",
@@ -644,7 +644,7 @@ export const products = [
   },
   {
     name: "69",
-    price: 0.25,
+    price: "0.25",
     photo_ref: "none",
     description: "Syrups",
     category: "Drink",
@@ -654,7 +654,7 @@ export const products = [
 
   {
     name: "70",
-    price: 0.75,
+    price: "0.75",
     photo_ref: "none",
     description: "Milks",
     category: "Drink",
@@ -664,17 +664,16 @@ export const products = [
 
   {
     name: "71",
-    price: 0.75,
+    price: "0.75",
     photo_ref: "none",
     description: "Extra Shot",
     category: "Drink",
     subcategory: "Extras",
     theme: "Extras",
   },
-
   {
     name: "72",
-    price: 1.25,
+    price: "1.25",
     photo_ref: "none",
     description: "Canned Soda",
     category: "Drink",

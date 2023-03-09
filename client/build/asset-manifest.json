@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8682999f.css",
+    "main.js": "/static/js/main.7d72727a.js",
+    "static/media/mainHeader.jpg": "/static/media/mainHeader.45a8574e5fb4137c962b.jpg",
+    "static/media/cake.jpg": "/static/media/cake.7092bfa86bf40de30409.jpg",
+    "static/media/cake2.jpg": "/static/media/cake2.bfb704a295c73a762282.jpg",
+    "static/media/cake4.jpg": "/static/media/cake4.1150ea477a759173a07f.jpg",
+    "static/media/cupcakes.jpg": "/static/media/cupcakes.6c24f605ce5493ba49a1.jpg",
+    "static/media/cake5.jpg": "/static/media/cake5.67152e049a5efbb30527.jpg",
+    "static/media/cake3.jpg": "/static/media/cake3.dbd794ef5ec56af1a678.jpg",
+    "static/media/cookies1.jpg": "/static/media/cookies1.ee72274bd6e95edfbcbd.jpg",
+    "static/media/cookies.jpg": "/static/media/cookies.1565e70475e5f7e3b035.jpg",
+    "static/media/cake1.jpg": "/static/media/cake1.0e974b1f76954bfbdcef.jpg",
+    "static/media/pastries.jpg": "/static/media/pastries.2d51cb3e0c6d0676c2b1.jpg",
+    "static/media/cWedding.jpg": "/static/media/cWedding.6f38d7faa4af03e306ea.jpg",
+    "static/media/cCakes.jpeg": "/static/media/cCakes.c91c9db999760ce7ee10.jpeg",
+    "static/media/cCookies.jpg": "/static/media/cCookies.bad498c5c8b267828d08.jpg",
+    "static/media/cCupcakes.jpg": "/static/media/cCupcakes.1ff636332f6116cf0533.jpg",
+    "index.html": "/index.html",
+    "main.8682999f.css.map": "/static/css/main.8682999f.css.map",
+    "main.7d72727a.js.map": "/static/js/main.7d72727a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8682999f.css",
+    "static/js/main.7d72727a.js"
+  ]
+}

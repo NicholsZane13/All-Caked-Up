@@ -1,5 +1,6 @@
 const connection = require('../config/connection');
 const seedUsers = require('./user-seeds');
+const cakeSeeds = require('./cake-seeds');
 
 const seedDatabase = async () => {
     try {

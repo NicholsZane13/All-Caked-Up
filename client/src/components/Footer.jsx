@@ -2,8 +2,8 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="flex-shrink-0 ">
-      <div className="flex flex-col items-center justify-center bg-green text-white h-24 mb-auto">
+    <footer className="fixed bottom-0 w-full flex-shrink-0">
+      <div className="flex flex-col items-center justify-center bg-green text-white h-36 mb-auto">
         <div className="flex justify-center gap-4">
           <a href="https://www.instagram.com/all_caked_up_bytrinity/">
             <img
@@ -19,6 +19,11 @@ function Footer() {
               className="h-6 w-6"
             />
           </a>
+        </div>
+        <div className="text-center">
+          <p>Contact us!</p>
+          <p>allcakedup.bytrinity@gmail.com</p>
+          <p>(620) 263-6950</p>
         </div>
         <h2>🎂All Caked Up🍑</h2>
 

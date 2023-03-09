@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
-const Menu = () => {
-  const [currentCategory, setCurrentCategory] = useState(null);
-  
-  const displayItems = (category) => {
-    setCurrentCategory(category);
+function Menu() {
+  const [activeButton, setActiveButton] = useState("Cakes");
+
+  const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName);
   };
+
   const Cakes = [
     {
       name: "SheetCakes",
@@ -206,7 +207,7 @@ const Menu = () => {
       ],
     },
   ];
-  const  Pastries= [
+  const Pastries = [
     {
       name: "Chocolate Chip Muffins",
       price: "$3.00",
@@ -228,7 +229,7 @@ const Menu = () => {
       price: "$2.50",
     },
   ];
-  const  Cupcakes = [
+  const Cupcakes = [
     {
       name: "Chocolate",
       price: "$2.50",
@@ -428,42 +429,65 @@ const Menu = () => {
     },
   ];
 
-
-
-
-
-
-
-
-  const renderItems = (category) => {
-    return category.map((item, index) => (
-      <div key={index} className="card">
-        <h3>{item.name}</h3>
-        <p>{item.description}</p>
-        <p>{item.price}</p>
-      </div>
-    ));
-  };
-  
   return (
-    <div>
-      {/* Button for Drinks category */}
-      <button onClick={() => displayItems(Drinks)}>Drinks</button>
-      {/* Button for Cookies category */}
-      <button onClick={() => displayItems(Cookies)}>Cookies</button>
-      {/* Button for Cakes category */}
-      <button onClick={() => displayItems(Cakes)}>Cakes</button>
-      {/* Button for Donuts category */}
-      <button onClick={() => displayItems(Donuts)}>Donuts</button>
-      {/* Button for Pastries category */}
-      <button onClick={() => displayItems(Pastries)}>Pastries</button>
-      {/* Button for Cupcakes category */}
-      <button onClick={() => displayItems(Cupcakes)}>Cupcakes</button>
+    <div className="flex  items-center justify-center py-40 bg-greenL ">
+      <button
+        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
+          activeButton === "Coffee" ? "active" : ""
+        }`}
+        onClick={() => handleButtonClick("Coffee")}
+      >
+        Coffee
+      </button>
+      <button
+        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
+          activeButton === "Donuts" ? "active" : ""
+        }`}
+        onClick={() => handleButtonClick("Donuts")}
+      >
+        Donuts
+      </button>
+      <button
+        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
+          activeButton === "Pastries" ? "active" : ""
+        }`}
+        onClick={() => handleButtonClick("Pastries")}
+      >
+        Pastries
+      </button>
+      <button
+        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
+          activeButton === "Cupcakes" ? "active" : ""
+        }`}
+        onClick={() => handleButtonClick("Cupcakes")}
+      >
+        Cupcakes
+      </button>
+      <button
+        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
+          activeButton === "Cookies" ? "active" : ""
+        }`}
+        onClick={() => handleButtonClick("Cookies")}
+      >
+        Cookies
+      </button>
+      <button
+        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
+          activeButton === "Cakes" ? "active" : ""
+        }`}
+        onClick={() => handleButtonClick("Cakes")}
+      >
+        Cakes
+      </button>
 
-      {/* Display items for the current category */}
-      {currentCategory && renderItems(currentCategory)}
+      {/* <div className="picture-grid">
+        {pictures[activeButton] &&
+          pictures[activeButton].map((picture) => (
+            <img src={picture} alt="Random" key={picture} />
+          ))}
+      </div> */}
     </div>
   );
-};
+}
 
 export default Menu;

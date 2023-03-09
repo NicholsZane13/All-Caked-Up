@@ -8,7 +8,7 @@ import MainPic from "../../../assets/homePortfolio/mainHeader.jpg";
 function HomePage() {
   return (
     <>
-      <div className="bg-green sm:grid-cols-1 flex pl-10 pt-20 pb-10">
+      <div className="bg-green sm:grid-cols-1 flex pl-10 pt-20 pb-10 pt-40">
         <div className="content-left">
           <h1 className="font-Gloock text-left text-tan text-4xl md:text-7xl mb-1 md:mb-3 font-bold">
             Origin Story : All Caked Up

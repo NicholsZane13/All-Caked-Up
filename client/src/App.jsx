@@ -5,13 +5,27 @@ import ServicePage from "./components/pages/services/Services";
 import OnlineOrder from "./components/pages/online-order/OnlinePickUp";
 import Portfolio from "./components/pages/portfolio/Portfolio";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from "@apollo/client";
+import { setContext } from '@apollo/client/link/context'
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import LandingPage from "./components/pages/signup-login/LandingPage";
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+const authLink = setContext((_, {headers}) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
 const client = new ApolloClient({
-  uri: "/graphql",
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 

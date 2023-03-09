@@ -1,184 +1,93 @@
 import React, { useState } from "react";
-import {
-  TextField,
-  InputAdornment,
-  FormControl,
-  InputLabel,
-  IconButton,
-  Button,
-  Input,
-  Checkbox,
-  Alert,
-  Stack,
-} from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import LoginIcon from "@mui/icons-material/Login";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { LOGIN } from '../../../utils/mutations';
+import Auth from '../../../utils/auth';
 
-const isEmail = (email) =>
-  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+const Login = (props) => {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error, data }] = useMutation(LOGIN);
 
-export default function Login() {
-  const [showPassword, setShowPassword] = React.useState(false);
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-  const [emailInput, setEmailInput] = useState();
-  const [passwordInput, setPasswordInput] = useState();
-  const [rememberMe, setRememberMe] = useState();
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
-
-  const [formValid, setFormValid] = useState();
-  const [success, setSuccess] = useState();
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => {
+  // submit form
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-  };
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
 
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
-
-  const handleEmail = () => {
-    console.log(isEmail(emailInput));
-    if (!isEmail(emailInput)) {
-      setEmailError(true);
-      return;
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
     }
 
-    setEmailError(false);
-  };
-
-  const handlePassword = () => {
-    if (
-      !passwordInput ||
-      passwordInput.length < 5 ||
-      passwordInput.length > 20
-    ) {
-      setPasswordError(true);
-      return;
-    }
-
-    setPasswordError(false);
-  };
-
-  const handleSubmit = () => {
-    setSuccess(null);
-
-    if (emailError || !emailInput) {
-      setFormValid("Email is Invalid. Please Re-Enter");
-      return;
-    }
-
-    if (passwordError || !passwordInput) {
-      setFormValid(
-        "Password is set btw 5 - 20 characters long. Please Re-Enter"
-      );
-      return;
-    }
-    setFormValid(null);
-
-    console.log("Email : " + emailInput);
-    console.log("Password : " + passwordInput);
-    console.log("Remember : " + rememberMe);
-
-    setSuccess("Form Submitted Successfully");
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
+    });
   };
 
   return (
-    <div>
-      <div style={{ marginTop: "5px" }}>
-        <TextField
-          label="Email Address"
-          fullWidth
-          error={emailError}
-          id="standard-basic"
-          variant="standard"
-          sx={{ width: "100%" }}
-          value={emailInput}
-          InputProps={{}}
-          size="small"
-          onBlur={handleEmail}
-          onChange={(event) => {
-            setEmailInput(event.target.value);
-          }}
-        />
-      </div>
-      <div style={{ marginTop: "5px" }}>
-        <FormControl sx={{ width: "100%" }} variant="standard">
-          <InputLabel
-            error={passwordError}
-            htmlFor="standard-adornment-password"
-          >
-            Password
-          </InputLabel>
-          <Input
-            error={passwordError}
-            onBlur={handlePassword}
-            id="standard-adornment-password"
-            type={showPassword ? "text" : "password"}
-            onChange={(event) => {
-              setPasswordInput(event.target.value);
-            }}
-            value={passwordInput}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
+    <main className="flex-row justify-center mb-4">
+      <div className="col-12 col-lg-10">
+        <div className="card">
+          <h4 className="card-header bg-dark text-light p-2">Login</h4>
+          <div className="card-body">
+            {data ? (
+              <p>
+                Success! You may now head{' '}
+                <Link to="/">back to the homepage.</Link>
+              </p>
+            ) : (
+              <form onSubmit={handleFormSubmit}>
+                <input
+                  className="form-input"
+                  placeholder="Your email"
+                  name="email"
+                  type="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="******"
+                  name="password"
+                  type="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+                <button
+                  className="btn btn-block btn-info"
+                  style={{ cursor: 'pointer' }}
+                  type="submit"
                 >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
+                  Submit
+                </button>
+              </form>
+            )}
+
+            {error && (
+              <div className="my-3 p-3 bg-danger text-white">
+                {error.message}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-
-      <div style={{ fontSize: "10px" }}>
-        <Checkbox
-          {...label}
-          size="small"
-          onChange={(event) => setRememberMe(event.target.checked)}
-        />
-        Remember Me
-      </div>
-
-      <div style={{ marginTop: "10px" }}>
-        <Button
-          variant="contained"
-          fullWidth
-          startIcon={<LoginIcon />}
-          onClick={handleSubmit}
-        >
-          LOGIN
-        </Button>
-      </div>
-
-      {formValid && (
-        <Stack sx={{ width: "100%", paddingTop: "10px" }} spacing={2}>
-          <Alert severity="error" size="small">
-            {formValid}
-          </Alert>
-        </Stack>
-      )}
-
-      {success && (
-        <Stack sx={{ width: "100%", paddingTop: "10px" }} spacing={2}>
-          <Alert severity="success" size="small">
-            {success}
-          </Alert>
-        </Stack>
-      )}
-
-      <div style={{ marginTop: "7px", fontSize: "10px" }} margin="left">
-        <a>Forgot Password</a>
-        <br />
-        Do you have an account ?{" "}
-        <small style={{ textDecoration: "underline", color: "blue" }}>
-          Sign Up
-        </small>
-      </div>
-    </div>
+    </main>
   );
-}
+};
+
+export default Login;  

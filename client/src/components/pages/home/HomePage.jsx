@@ -6,7 +6,7 @@ import MainPic from "../../../assets/homePortfolio/mainHeader.jpg";
 function HomePage() {
   return (
     <>
-      <div className=" sm:sm:p-auto flex bg-green flex pl-10 pt-20 pb-10">
+      <div className="sm:p-auto flex bg-green flex pl-10 pt-20 pb-10">
         <div className="sm:grid grid-cols-1 lg:grid grid-cols-3">
           <div className="">
             <h1 className="font-Gloock sm:text-2xl text-left text-tan text-4xl md:text-7xl mb-1 md:mb-3 font-bold">

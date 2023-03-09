@@ -9,8 +9,8 @@ function Navbar() {
   };
 
   return (
-    <div className="fixed top-0 bg-green z-10 h-20 flex items-center justify-center pr-4">
-      <nav>
+    <div className="top-0 bg-green flex items-right justify-end pr-4">
+      <div className="flex justify-between w-full">
         <ul className="flex justify-end bg-green">
           <li>
             <Link to="/">
@@ -54,7 +54,7 @@ function Navbar() {
             )}
           </li>
         </ul>
-      </nav>
+      </div>
     </div>
   );
 }

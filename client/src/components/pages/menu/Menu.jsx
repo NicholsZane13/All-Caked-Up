@@ -428,7 +428,9 @@ function Menu() {
       ],
     },
   ];
-
+  const pictures = [
+    "https://upload.wikimedia.org/wikipedia/commons/a/a5/Borat.jpg",
+  ];
   return (
     <div className="flex  items-center justify-center py-40 bg-greenL ">
       <button
@@ -480,12 +482,12 @@ function Menu() {
         Cakes
       </button>
 
-      {/* <div className="picture-grid">
+      <div className="picture-grid">
         {pictures[activeButton] &&
           pictures[activeButton].map((picture) => (
             <img src={picture} alt="Random" key={picture} />
           ))}
-      </div> */}
+      </div>
     </div>
   );
 }

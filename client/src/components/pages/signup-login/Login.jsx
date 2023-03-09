@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-
-// Material UI Imports
 import {
   TextField,
   InputAdornment,
@@ -13,42 +11,33 @@ import {
   Alert,
   Stack,
 } from "@mui/material";
-
-// Material UI Icon Imports
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 
-// Email Validation
 const isEmail = (email) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
 
 export default function Login() {
   const [showPassword, setShowPassword] = React.useState(false);
 
-  //Inputs
   const [emailInput, setEmailInput] = useState();
   const [passwordInput, setPasswordInput] = useState();
   const [rememberMe, setRememberMe] = useState();
 
-  // Inputs Errors
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
 
-  // Overall Form Validity
   const [formValid, setFormValid] = useState();
   const [success, setSuccess] = useState();
 
-  // Handles Display and Hide Password
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
-  // Label for Checkbox
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-  // Validation for onBlur Email
   const handleEmail = () => {
     console.log(isEmail(emailInput));
     if (!isEmail(emailInput)) {
@@ -59,7 +48,6 @@ export default function Login() {
     setEmailError(false);
   };
 
-  // Validation for onBlur Password
   const handlePassword = () => {
     if (
       !passwordInput ||
@@ -73,18 +61,14 @@ export default function Login() {
     setPasswordError(false);
   };
 
-  //handle Submittion
   const handleSubmit = () => {
     setSuccess(null);
-    //First of all Check for Errors
 
-    // If Email error is true
     if (emailError || !emailInput) {
       setFormValid("Email is Invalid. Please Re-Enter");
       return;
     }
 
-    // If Password error is true
     if (passwordError || !passwordInput) {
       setFormValid(
         "Password is set btw 5 - 20 characters long. Please Re-Enter"
@@ -93,12 +77,10 @@ export default function Login() {
     }
     setFormValid(null);
 
-    // Proceed to use the information passed
     console.log("Email : " + emailInput);
     console.log("Password : " + passwordInput);
     console.log("Remember : " + rememberMe);
 
-    //Show Successfull Submittion
     setSuccess("Form Submitted Successfully");
   };
 
@@ -173,7 +155,6 @@ export default function Login() {
         </Button>
       </div>
 
-      {/* Show Form Error if any */}
       {formValid && (
         <Stack sx={{ width: "100%", paddingTop: "10px" }} spacing={2}>
           <Alert severity="error" size="small">
@@ -182,7 +163,6 @@ export default function Login() {
         </Stack>
       )}
 
-      {/* Show Success if no issues */}
       {success && (
         <Stack sx={{ width: "100%", paddingTop: "10px" }} spacing={2}>
           <Alert severity="success" size="small">

@@ -46,7 +46,7 @@ function Navbar() {
               Log Out
             </button>
             ) : (
-            <Link to="/login">
+            <Link to="/loginorsignup">
               <button className="text-right relative mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded">
                 Log In
               </button>

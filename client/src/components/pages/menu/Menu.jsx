@@ -441,7 +441,7 @@ function Menu() {
           className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
             activeButton === "Coffee" ? "active" : ""
           }`}
-          onClick={() => handleButtonClick("Coffee")}
+          onClick={() => handleButtonClick("Drink")}
         >
           Coffee
         </button>

@@ -6,8 +6,11 @@ export default function Cake(props) {
     >
       <div className="max-w-sm rounded overflow-hidden shadow-lg bg-green text-white">
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">{props.name}</div>
-          <p className="text-gray-700 text-base">DESCRIPTION / PRICE</p>
+          <div className="font-bold text-xl mb-2 text-center">  
+            {props.subcategory}
+          </div>
+          <p className="text-gray-700  text-center ">{props.description}</p>
+          <p className="text-gray-700 text-base text-center ">{props.price}</p>
         </div>
       </div>
     </div>

@@ -1,158 +1,93 @@
 import React, { useState } from "react";
-import {
-  Alert,
-  Button,
-  Checkbox,
-  FormControl,
-  IconButton,
-  Input,
-  InputAdornment,
-  InputLabel,
-  Stack,
-  TextField,
-} from "@mui/material";
-import LoginIcon from "@mui/icons-material/Login";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { LOGIN } from '../../../utils/mutations';
+import Auth from '../../../utils/auth';
 
 const Login = (props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error, data }] = useMutation(LOGIN);
 
-  const handleEmail = (event) => {
-    const emailInput = event.target.value;
-    setEmail(emailInput);
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
   };
 
-  const handlePassword = (event) => {
-    const passwordInput = event.target.value;
-    setPassword(passwordInput);
-  };
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleMouseDownPassword = (event) => {
+  // submit form
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-  };
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log(email, password, rememberMe);
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
 
-    // TODO: Implement login functionality
-    // try {
-    //   const { data } = await login({
-    //     variables: { email, password },
-    //   });
-    //
-    //   Auth.login(data.login.token);
-    //
-    //   setSuccess("Login successful.");
-    // } catch (e) {
-    //   console.error(e);
-    //   setError("Invalid email or password.");
-    // }
-
-    setEmail("");
-    setPassword("");
-  };
-
-  const handleRememberMe = (event) => {
-    setRememberMe(event.target.checked);
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
+    });
   };
 
   return (
-    <div>
-      <div style={{ marginTop: "5px" }}>
-        <TextField
-          label="Email Address"
-          fullWidth
-          error={error}
-          variant="standard"
-          sx={{ width: "100%" }}
-          value={email}
-          onChange={handleEmail}
-        />
+    <main className="flex-row justify-center mb-4">
+      <div className="col-12 col-lg-10">
+        <div className="card">
+          <h4 className="card-header bg-dark text-light p-2">Login</h4>
+          <div className="card-body">
+            {data ? (
+              <p>
+                Success! You may now head{' '}
+                <Link to="/">back to the homepage.</Link>
+              </p>
+            ) : (
+              <form onSubmit={handleFormSubmit}>
+                <input
+                  className="form-input"
+                  placeholder="Your email"
+                  name="email"
+                  type="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="******"
+                  name="password"
+                  type="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+                <button
+                  className="btn btn-block btn-info"
+                  style={{ cursor: 'pointer' }}
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </form>
+            )}
+
+            {error && (
+              <div className="my-3 p-3 bg-danger text-white">
+                {error.message}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-      <div style={{ marginTop: "5px" }}>
-        <FormControl sx={{ width: "100%" }} variant="standard">
-          <InputLabel error={error} htmlFor="standard-adornment-password">
-            Password
-          </InputLabel>
-          <Input
-            error={error}
-            id="standard-adornment-password"
-            type={showPassword ? "text" : "password"}
-            value={password}
-            onChange={handlePassword}
-            endAdornment={
-              <InputAdornment position="end"> 
-
-            <IconButton
-              aria-label="toggle password visibility"
-              onClick={handleClickShowPassword}
-              onMouseDown={handleMouseDownPassword}
-            >
-              {showPassword ? <VisibilityOff /> : <Visibility />}
-            </IconButton>
-          </InputAdornment>
-        }
-      />
-    </FormControl>
-  </div>
-
-  <div style={{ fontSize: "10px" }}>
-    <Checkbox
-      size="small"
-      checked={rememberMe}
-      onChange={handleRememberMe}
-    />
-    Remember Me
-  </div>
-
-  <div style={{ marginTop: "10px" }}>
-    <Button
-      variant="contained"
-      fullWidth
-      startIcon={<LoginIcon />}
-      onClick={handleSubmit}
-    >
-      LOGIN
-    </Button>
-  </div>
-
-  {error && (
-    <Stack sx={{ width: "100%", paddingTop: "10px" }} spacing={2}>
-      <Alert severity="error" size="small">
-        {error}
-      </Alert>
-    </Stack>
-  )}
-
-  {success && (
-    <Stack sx={{ width: "100%", paddingTop: "10px" }} spacing={2}>
-      <Alert severity="success" size="small">
-        {success}
-      </Alert>
-    </Stack>
-  )}
-
-  <div style={{ marginTop: "7px", fontSize: "10px" }} margin="left">
-    <a>Forgot Password</a>
-    <br />
-    Do you have an account?{" "}
-    <small style={{ textDecoration: "underline", color: "blue" }}>
-      Sign Up
-    </small>
-  </div>
-</div>
-);
+    </main>
+  );
 };
 
 export default Login;  

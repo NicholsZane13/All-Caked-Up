@@ -428,65 +428,159 @@ function Menu() {
       ],
     },
   ];
-  const pictures = [
-    "https://upload.wikimedia.org/wikipedia/commons/a/a5/Borat.jpg",
-  ];
-  return (
-    <div className="flex  items-center justify-center py-40 bg-greenL ">
-      <button
-        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
-          activeButton === "Coffee" ? "active" : ""
-        }`}
-        onClick={() => handleButtonClick("Coffee")}
-      >
-        Coffee
-      </button>
-      <button
-        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
-          activeButton === "Donuts" ? "active" : ""
-        }`}
-        onClick={() => handleButtonClick("Donuts")}
-      >
-        Donuts
-      </button>
-      <button
-        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
-          activeButton === "Pastries" ? "active" : ""
-        }`}
-        onClick={() => handleButtonClick("Pastries")}
-      >
-        Pastries
-      </button>
-      <button
-        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
-          activeButton === "Cupcakes" ? "active" : ""
-        }`}
-        onClick={() => handleButtonClick("Cupcakes")}
-      >
-        Cupcakes
-      </button>
-      <button
-        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
-          activeButton === "Cookies" ? "active" : ""
-        }`}
-        onClick={() => handleButtonClick("Cookies")}
-      >
-        Cookies
-      </button>
-      <button
-        className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
-          activeButton === "Cakes" ? "active" : ""
-        }`}
-        onClick={() => handleButtonClick("Cakes")}
-      >
-        Cakes
-      </button>
+  const menuItems = [Cakes, Cookies, Pastries, Cupcakes, Donuts, Drinks];
 
-      <div className="picture-grid">
-        {pictures[activeButton] &&
-          pictures[activeButton].map((picture) => (
-            <img src={picture} alt="Random" key={picture} />
-          ))}
+  return (
+    <div className=" bg-greenL ">
+      <div className="flex  items-center justify-center pt-40" id="buttons">
+        <button
+          className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
+            activeButton === "Coffee" ? "active" : ""
+          }`}
+          onClick={() => handleButtonClick("Coffee")}
+        >
+          Coffee
+        </button>
+        <button
+          className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
+            activeButton === "Donuts" ? "active" : ""
+          }`}
+          onClick={() => handleButtonClick("Donuts")}
+        >
+          Donuts
+        </button>
+        <button
+          className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
+            activeButton === "Pastries" ? "active" : ""
+          }`}
+          onClick={() => handleButtonClick("Pastries")}
+        >
+          Pastries
+        </button>
+        <button
+          className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
+            activeButton === "Cupcakes" ? "active" : ""
+          }`}
+          onClick={() => handleButtonClick("Cupcakes")}
+        >
+          Cupcakes
+        </button>
+        <button
+          className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
+            activeButton === "Cookies" ? "active" : ""
+          }`}
+          onClick={() => handleButtonClick("Cookies")}
+        >
+          Cookies
+        </button>
+        <button
+          className={`mx-4 bg-peri hover:bg-gray-400 text-white font-bold py-2 px-4 border border-gray-400 rounded ${
+            activeButton === "Cakes" ? "active" : ""
+          }`}
+          onClick={() => handleButtonClick("Cakes")}
+        >
+          Cakes
+        </button>
+      </div>
+
+      <div
+        className="p-24 grid grid-cols-5 gap-8 mt-8 justify-items-center justify-center"
+        id="cards"
+      >
+        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-green text-white">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p className="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatibus quia, nulla! Maiores et perferendis eaque,
+              exercitationem praesentium nihil.
+            </p>
+          </div>
+        </div>
+        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-green text-white">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p className="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatibus quia, nulla! Maiores et perferendis eaque,
+              exercitationem praesentium nihil.
+            </p>
+          </div>
+        </div><div className="max-w-sm rounded overflow-hidden shadow-lg bg-green text-white">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p className="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatibus quia, nulla! Maiores et perferendis eaque,
+              exercitationem praesentium nihil.
+            </p>
+          </div>
+        </div><div className="max-w-sm rounded overflow-hidden shadow-lg bg-green text-white">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p className="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatibus quia, nulla! Maiores et perferendis eaque,
+              exercitationem praesentium nihil.
+            </p>
+          </div>
+        </div><div className="max-w-sm rounded overflow-hidden shadow-lg bg-green text-white">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p className="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatibus quia, nulla! Maiores et perferendis eaque,
+              exercitationem praesentium nihil.
+            </p>
+          </div>
+        </div><div className="max-w-sm rounded overflow-hidden shadow-lg bg-green text-white">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p className="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatibus quia, nulla! Maiores et perferendis eaque,
+              exercitationem praesentium nihil.
+            </p>
+          </div>
+        </div><div className="max-w-sm rounded overflow-hidden shadow-lg bg-green text-white">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p className="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatibus quia, nulla! Maiores et perferendis eaque,
+              exercitationem praesentium nihil.
+            </p>
+          </div>
+        </div><div className="max-w-sm rounded overflow-hidden shadow-lg bg-green text-white">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p className="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatibus quia, nulla! Maiores et perferendis eaque,
+              exercitationem praesentium nihil.
+            </p>
+          </div>
+        </div><div className="max-w-sm rounded overflow-hidden shadow-lg bg-green text-white">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p className="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatibus quia, nulla! Maiores et perferendis eaque,
+              exercitationem praesentium nihil.
+            </p>
+          </div>
+        </div><div className="max-w-sm rounded overflow-hidden shadow-lg bg-green text-white">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p className="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatibus quia, nulla! Maiores et perferendis eaque,
+              exercitationem praesentium nihil.
+            </p>
+          </div>
+        </div>
+        
+          
       </div>
     </div>
   );
